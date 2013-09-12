@@ -1,0 +1,4 @@
+[S] ||| [NP,1] [VP,2] ||| [1] [2] ||| LogProb=0.0
+[NP] ||| ich ||| i ||| LogProb=-0.6
+[VP] ||| laufe ||| run ||| LogProb=-0.6 WSD=-1.0
+[VP] ||| laufe ||| operate ||| LogProb=-0.6 WSD=-2.0
