@@ -8,20 +8,35 @@ in the default NLTK way), then print out one sentence per line with the words
 already tokenized, into the specified output file.
 """
 
-import sys
+import argparse
 import nltk
 
+def get_argparser():
+    """Build the argument parser for main."""
+    parser = argparse.ArgumentParser(description='memmwsd')
+    parser.add_argument('--infn', type=str, required=True)
+    parser.add_argument('--outfn', type=str, required=True)
+    parser.add_argument('--tokenize',dest='tokenize',action='store_true')
+    parser.add_argument('--no-tokenize',dest='tokenize',action='store_false')
+    parser.set_defaults(tokenize=False)
+    return parser
+
 def main():
-    assert len(sys.argv) == 3
-    with open(sys.argv[1]) as infile:
+    parser = get_argparser()
+    args = parser.parse_args()
+
+    with open(args.infn) as infile:
         text = infile.read()
 
     sentences = nltk.sent_tokenize(text)
-    with open(sys.argv[2], "w") as outfile:
+    with open(args.outfn, "w") as outfile:
         for sent in sentences:
             sent = sent.strip()
             if not sent: continue
-            toks = nltk.word_tokenize(sent)
-            print(" ".join(toks), file=outfile)
+            if args.tokenize:
+                toks = nltk.word_tokenize(sent)
+                print(" ".join(toks), file=outfile)
+            else:
+                print(sent, file=outfile)
 
 if __name__ == "__main__": main()
