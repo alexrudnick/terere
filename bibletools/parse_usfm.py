@@ -52,6 +52,18 @@ def remove_formatting(book, chapter, verse, text):
         out = out.replace(toremove, "")
     return out
 
+SPEAKER_PATTERN = re.compile(r"\\sp [\w]+")
+def remove_speaker_annotations(book, chapter, verse, text):
+    """Given the text of a verse, take out the \\sp SPEAKER annotations."""
+    out = re.sub(SPEAKER_PATTERN, "", text)
+    if out != text:
+        matched = re.search(SPEAKER_PATTERN, text)
+        speaker = matched.group(0)
+        util.dprint("Stripped speaker identification: '{0}' in '{1}'".format(
+            speaker, (chapter,verse,text)))
+    return out
+
+
 ## NOTE: USFM doesn't require that verses be all on one line in the input file.
 ## We're going to have to merge lines as we go.
 ## The interesting thing here is -- when do we know when we're at the end of a
@@ -61,6 +73,7 @@ def clean_and_print(book, chapter, verse, text):
     fixed = remove_footnotes(book, chapter, verse, text)
     fixed = remove_crossrefs(book, chapter, verse, fixed)
     fixed = remove_formatting(book, chapter, verse, fixed)
+    fixed = remove_speaker_annotations(book, chapter, verse, fixed)
     fixed = fixed.strip()
     if fixed:
         print("{0}_{1}_{2}\t{3}".format(book, chapter, verse, fixed))

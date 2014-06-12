@@ -25,6 +25,12 @@ class TestCleanup(unittest.TestCase):
         cleaned = parse_usfm.remove_crossrefs("KGS", 12, 4, verse_kgs_12_4)
         self.assertEqual(cleaned, verse_kgs_12_4_nocrossref)
 
+    def test_speaker(self):
+        cleaned = parse_usfm.remove_speaker_annotations("foo", 0, 0,
+            "does this even work \\sp Speakername Maybe.")
+        cleaned = cleaned.replace("  ", " ")
+        self.assertEqual(cleaned, "does this even work Maybe.")
+
 if __name__ == '__main__':
     unittest.main()
 
