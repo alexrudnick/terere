@@ -122,10 +122,10 @@ def main():
             ## hit the end of this file.
             if book and chapter and verse and text:
                 clean_and_print(book, chapter, verse, text)
-                book = None
-                chapter = None
-                verse = None
-                text = ""
+            book = None
+            chapter = None
+            verse = None
+            text = ""
 
 
     util.dprint("Saw this many books out of expected 66:",len(seenbooks))
