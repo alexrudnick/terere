@@ -31,8 +31,12 @@ def main():
     left = set_of_verses(sys.argv[1])
     right = set_of_verses(sys.argv[2])
     print("[left but not right]")
-    print(left - right)
+    leftbutnotright = sorted(list(left - right))
+    for verse in leftbutnotright:
+        print(verse)
     print("[right but not left]")
-    print(right - left)
+    rightbutnotleft = sorted(list(right - left))
+    for verse in rightbutnotleft:
+        print(verse)
 
 if __name__ == "__main__": main()
