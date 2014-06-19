@@ -32,8 +32,10 @@ def extract_verses(fn):
         out[verseid].append(text)
     return out
 
-def fix_verseid(verseid):
-    util.dprint(verseid)
+def fix_verseid(verseid, versetext):
+    if verseid.count('.') != 2:
+        util.dprint("{0}\t{1}".format(verseid, versetext))
+        return None
     book, chapter, verse = verseid.split(".")
     book = booknames.code(book)
     assert book in booknames.knownbooks()
@@ -45,7 +47,8 @@ def main():
         versetable = extract_verses(fn)
         for verseid in versetable:
             versetext = " ".join(versetable[verseid])
-            verseid = fix_verseid(verseid)
-            print("{0}\t{1}".format(verseid, versetext))
+            verseid = fix_verseid(verseid, versetext)
+            if verseid:
+                print("{0}\t{1}".format(verseid, versetext))
 
 if __name__ == "__main__": main()
