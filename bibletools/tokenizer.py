@@ -10,7 +10,6 @@ special_gn = "ÃẼĨÑÕŨỸ'ãẽĩñõũỹ\u0303"
 def gn_tokenizer():
     letters = "{0}\\w".format(special_gn)
     pattern = "[{0}]+|[^{0}\\s]+".format(letters)
-    print(pattern)
     return nltk.RegexpTokenizer(pattern)
 
 def main():

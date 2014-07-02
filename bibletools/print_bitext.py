@@ -15,6 +15,7 @@ Also optionally do lowercasing, tokenization and lemmatization.
 import argparse
 
 import util
+import tokenizer
 
 def load_bible(fn):
     out = {}
@@ -44,6 +45,8 @@ def get_argparser():
     parser.add_argument('--source', type=str, required=True)
     parser.add_argument('--target', type=str, required=True)
     parser.add_argument('--lowercase', default=False, action='store_true')
+    parser.add_argument('--tokenize', default=True, action='store_true')
+    parser.add_argument('--notokenize', default=False, dest='tokenize', action='store_false')
     return parser
 
 def main():
@@ -51,16 +54,24 @@ def main():
     args = argparser.parse_args()
     sourcefn = args.source
     targetfn = args.target
-    lowercase = args.lowercase
 
     sourcebible = load_bible(sourcefn)
     targetbible = load_bible(targetfn)
 
+    thetokenizer = tokenizer.gn_tokenizer()
+
     both = shared_verses(sourcebible, targetbible)
     for verseid in sorted(both):
         left, right = sourcebible[verseid], targetbible[verseid]
-        if lowercase:
+        if args.lowercase:
             left, right = left.lower(), right.lower()
+
+        if args.tokenize:
+            gnwords = thetokenizer.tokenize(right)
+            right = " ".join(gnwords)
+            eswords = thetokenizer.tokenize(left)
+            left = " ".join(eswords)
+
         print("{0} ||| {1}".format(left, right))
 
 if __name__ == "__main__": main()
