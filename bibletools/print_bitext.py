@@ -13,9 +13,18 @@ Also optionally do lowercasing, tokenization and lemmatization.
 """
 
 import argparse
+import os
+import sys
 
 import util
 import tokenizer
+
+## MA for es and gn
+here = os.path.dirname(os.path.realpath(__file__))
+paramorfo = os.path.realpath(
+    os.path.join(here, "..", "dependencies", "ParaMorfo-1.1"))
+sys.path.append(paramorfo)
+import l3
 
 def load_bible(fn):
     out = {}
@@ -47,6 +56,7 @@ def get_argparser():
     parser.add_argument('--lowercase', default=False, action='store_true')
     parser.add_argument('--tokenize', default=True, action='store_true')
     parser.add_argument('--notokenize', default=False, dest='tokenize', action='store_false')
+    parser.add_argument('--lemmatize', default=False, action='store_true')
     return parser
 
 def main():
@@ -72,6 +82,30 @@ def main():
             eswords = thetokenizer.tokenize(left)
             left = " ".join(eswords)
 
+        if args.lemmatize:
+            gnlemmas = []
+            gnwords = right.split()
+            for gnword in gnwords:
+                analyses = l3.anal('gn', gnword, raw=True)
+                if analyses == []:
+                    gnlemmas.append(gnword)
+                else:
+                    lemmas = "/".join(a[0] for a in analyses)
+                    gnlemmas.append(lemmas)
+            right = " ".join(gnlemmas)
+
+            eslemmas = []
+            eswords = left.split()
+            for esword in eswords:
+                analyses = l3.anal('es', esword, raw=True)
+                if analyses == []:
+                    eslemmas.append(esword)
+                else:
+                    lemmas = "/".join(a[0] for a in analyses)
+                    # print("GOT A SPANISH ANALYSIS. word: {0} lemma: {1}".format(esword, lemmas))
+                    eslemmas.append(lemmas)
+            left = " ".join(eslemmas)
         print("{0} ||| {1}".format(left, right))
+        break
 
 if __name__ == "__main__": main()
