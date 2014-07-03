@@ -1,0 +1,58 @@
+## Verbos: areal, aireal
+
+weighting = UNIFICATION
+
+### Clases de carácteres
+. = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', <h, <j, <ñ, !, R, $, <, E, B, D, J, P, %, *}
+## vowels
+@v = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, E}
+##* non-vowels
+@c = {ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', <h, <j, <ñ, !, R, $, B, D, J, P, %, *}
+## accented vowels, excluding nasals
+@V = {á, é, í, ó, ú, ý}
+## non-accented vowels
+@w = {a, e, i, o, u, y, ã, ẽ, ĩ, õ, ũ, ỹ, E}
+## vowels that precede i in -ite(rei)
+@u = {a, u, á, ú, ã, ũ}
+@o = {i, o, y, í, ó, ý, ĩ, õ, ỹ}
+## i
+@i = {i, í, ĩ}
+## nasal segments
+@n = {ã, ẽ, ĩ, õ, ũ, ỹ, ĝ, m, mb, n, nd, ng, nt, ñ, <ñ, B, D}
+## nasal root segments
+@N = {ã, ẽ, ĩ, õ, ũ, ỹ, ĝ, m, mb, n, nd, ng, nt, ñ, <ñ}
+##* non-nasal segments
+@x = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ch, g, h, j, k, l, p, r, rr, s, t, v, ', <h, <j, !, R, $, <, E, P, %, *}
+## (pre)nasal archiphonemes
+@M = {B, D, J}
+
+## root consonants; excludes Spanish consonants: l, rr
+@F = {ch, g, ĝ, h, j, k, m, mb, n, nd, ng, nt, ñ, p, r, s, t, v, ', <h, <j, <ñ}
+@R = {ch, g, ĝ, h, j, k, m, mb, n, nd, ng, nt, ñ, p, r, s, t, v, '}
+## root vowels
+@r = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ}
+# root vowels without stress
+@L = {a, e, i, o, u, y, ã, ẽ, ĩ, õ, ũ, ỹ}
+
+### FSTs
+>dflt_a.ar<
+# Realize R as r after @i
+>Racc.ar<
+# Accent first unaccented character before !
+>accV<
+# Eliminate all but last accented character
+>deacc<
+# Eliminate all !s before and after any accented character
+>acc<
+>del_acc<
+>Ete<
+# Delete stem end mark %
+>stemmark.ar<
+## B -> m, D -> n, J -> ñ antes de nasales
+>nas<
+# Realiza P
+>P1.ar<
+## Realize <h as r, <j and <ñ as 0 when there's a preceding $
+>r0.ar<
+# morphotactics
+>va0.mtx<

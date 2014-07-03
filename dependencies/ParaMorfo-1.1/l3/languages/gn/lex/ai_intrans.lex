@@ -1,0 +1,10 @@
+guyru
+ke
+peju
+pipi
+pirakutu
+poreno
+py'apy
+tykua
+typei
+typeka

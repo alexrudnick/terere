@@ -1,0 +1,50 @@
+# -*- coding: utf-8 -*-
+weighting = UNIFICATION
+
+### Stringsets
+## Vowels
+f = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ}
+## Capitalized vowels
+F = {A, E, I, O, U, Y, Á, É, Í, Ó, Ú, Ý, Ã, Ẽ, Ĩ, Õ, Ũ, Ỹ}
+## All vowels
+FF = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, A, E, I, O, U, Y, Á, É, Í, Ó, Ú, Ý, Ã, Ẽ, Ĩ, Õ, Ũ, Ỹ}
+## Nasal vowels
+Z = {ã, ẽ, ĩ, õ, ũ, ỹ}
+## Oral vowels
+z = {a, e, i, o, u, y, á, é, í, ó, ú, ý}
+
+## Native consonants, lowercase
+x = {ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, '}
+## Capitalized consonants
+X = {Ch, G, Ĝ, H, J, K, L, M, Mb, N, Nd, Ng, Nt, Ñ, P, R, S, T, V}
+## All consonants
+XX = {ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', Ch, G, Ĝ, H, J, K, L, M, Mb, N, Nd, Ng, Nt, Ñ, P, R, S, T, V}
+## Nasal consonants
+Q = {ĝ, m, mb, n, nd, ng, nt, ñ}
+## Oral consonants
+q = {ch, g, h, j, k, l, p, r, rr, s, t, v, '}
+
+## Nasal segments, lowercase
+& = {ã, ẽ, ĩ, õ, ũ, ỹ, ĝ, m, mb, n, nd, ng, nt, ñ}
+## Oral segments, lowercase
+% = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ch, g, h, j, k, l, p, r, rr, s, t, v, '}
+
+## Native consonant phonemes
+w = {ch, h, k, l, nt, p, r, rr, s, t, v, ', B, D, J, ng, G}
+
+## Special characters
+# 0: mb/m, 1: nd/n, 2: j/ñ
+# !: accent previous vowel; &: nasal segments; %: oral segments
+$ = {!, &, %, R, I}
+
+# possible non-alphabetic characters f F q Q w W x X z Z ! @ $ % & * + = | ?
+
+### FSTs
+# Accent vowel before atonic suffix
+>acc<
+# Realize nasal/prenasal consonants
+>nas<
+# Realize r of negative suffix
+>R<
+## morphotactics
+>all_mtax<

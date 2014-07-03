@@ -1,0 +1,10 @@
+Itaipu     itaipu
+Jasyretã   jasyretã   
+Paraguay   paraguay
+Paraguái   paraguái
+Parana     parana
+Uruguay    uruguay
+Ygatĩmi    ygatĩmi
+Yguasu     yguasu
+Ypakarai   ypakarai
+Yvytyrusu  yvytyrusu

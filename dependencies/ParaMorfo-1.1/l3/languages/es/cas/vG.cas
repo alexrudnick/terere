@@ -1,0 +1,58 @@
+weighting = UNIFICATION
+
+### Special characters
+# _: boundary between vowels that are not diphthongs
+# ': accent next vowel
+# `: accent last vowel
+
+### Stringsets
+## Vowels
+V = {a, e, i, o, u, á, é, í, ó, ú, ü, E, O, I, U, !}
+V0 = {a, e, i, o, u, E, I, O, U, !}
+V1 = {á, é, í, ó, ú}
+V2 = {a, e, i, o, u, á, é, í, ó, ú, ü}
+V3 = {E, O, I, U, !}
+V4 = {a, e, i, o, u}
+## Consonants
+X = {b, c, ch, d, f, g, h, j, k, l, ll, m, n, ñ, p, qu, r, rr, s, t, v, w, x, y, z, C, G, J, K, Z}
+Q = {', `, _}
+
+### FSTs
+# Realize the special consonants C, G, J, K, Z in particular environments
+>CV< 
+# Delete i between ll, ñ, y and another vowel: bulló
+>ll_nyiV< 
+# Delete i between j and e: dijeron
+>jie<
+# Delete y when followed by i and a consonant
+>yi<
+# Delete i when it comes between i and another vowel: riera
+# and realize i as y when it comes between vowels otherwise: leyera
+>ViV<
+# Realize 'V as an accented vowel, unless it's already accented
+>Vacc<
+# Drop the ' (accent symbol) before vowels in one-syllable words
+>Vacc1<
+# Realize the special vowels O, E, U, !
+>OE<
+# Realize vowel (and optional h) followed by _u/_i as V(h)ú/í when accented,
+# V(h)u/i otherwise
+>V_ui<
+# Realize i_/u_ followed by vowel as íV/úV if accented, iV/uV otherwise
+>ui_V<
+# Realize I as e, U as O, IE as E
+#   when vowel follows
+# Realize the special vowel I as i when there is another vowel other than i,
+#   as e otherwise
+# Convert U to O (when no vowel follows)
+# and IE to ! or E
+>IU<
+# Realize some sequences of vowels::
+# delete a before o/e: hablo
+# delete e before o: como
+# delete I before o: vivo
+>VV<
+# Convert the pre-accent symbol ` to 'V, where V is the previous vowel
+>acc_last<
+# Morphotactics
+>vG_mtax<

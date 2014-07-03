@@ -1,0 +1,57 @@
+weighting = UNIFICATION
+
+### Character classes
+## All characters
+. = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', <h, <j, <ñ, !, R, ^, $, <}
+## vowels
+@v = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ}
+## accented vowels
+@V = {á, é, í, ó, ú, ý}
+## unaccented, non-nasal vowels
+@a = {a, e, i, o, y, y}
+## i
+@i = {i, í, ĩ}
+## consonants
+@c = {ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', <h, <j, <ñ}
+## nasal segments
+@n = {ã, ẽ, ĩ, õ, ũ, ỹ, ĝ, m, mb, n, nd, ng, nt, ñ}
+## oral segments
+@o = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ch, g, h, j, k, l, p, r, rr, s, t, v, '}
+## prenasal
+@N = {mb, nd, j, ng}
+## oscillating lexical characters
+@h = {<h, <j, <ñ}
+## characters following ^
+@x = {mb, m, nd, n, j, ñ, i}
+## R, $, ^
+@X = {R, $, ^, !}
+
+### FSTs
+# Delete !, R, ^, $
+>del.ar<
+# Realize R as r after @i
+>Racc.ar<
+# Accent first unaccented character before !
+>acc2.ar<
+# Eliminate all !s after any accented character
+>acc1.ar<
+# Realize ^p, ^k, ^t as mb, ng, nd after nasals
+>nas3.ar<
+# Fix problems with nas1
+>nas2.ar<
+# Realize ^mb, ^nd, ^j as m, n, ñ before nasals
+>nas1.ar<
+# Change ^i to ^i^j before (other) vowels
+>i3V.ar<
+# Change ^i to hi' before a word consisting only of a vowel
+>i3V0.ar<
+# Change ^i to hi' before accented vowels
+>i3Vacc.ar<
+# Realize <h as h, <j as j, <ñ as ñ when there's no preceding $
+>hjN.ar<
+# Realize <h as r, <j and <ñ as 0 when there's a preceding $
+>r0.ar<
+# Delete ^i before <h
+>i3h.ar<
+# morphotactics
+>v.mtx<

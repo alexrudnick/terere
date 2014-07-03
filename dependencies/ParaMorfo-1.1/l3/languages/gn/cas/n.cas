@@ -1,0 +1,44 @@
+## Sustantivos
+
+weighting = UNIFICATION
+
+### Character classes
+## All characters
+. = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', <h, <j, <ñ, !, ^, B, X, A, E, I, O, U, Y, Á, É, Í, Ó, Ú, Ý, Ã, Ẽ, Ĩ, Õ, Ũ, Ỹ, Ch, G, Ĝ, H, J, K, L, M, Mb, N, Nd, Ng, Nt, Ñ, P, R, Rr, S, T, V}
+## vowels
+@v = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, A, E, I, O, U, Y, Á, É, Í, Ó, Ú, Ý, Ã, Ẽ, Ĩ, Õ, Ũ, Ỹ}
+## real vowels
+@W = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, A, E, I, O, U, Y, Á, É, Í, Ó, Ú, Ý, Ã, Ẽ, Ĩ, Õ, Ũ, Ỹ}
+## non-vowels and I; used in Ete.fst
+@c = {ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', <h, <j, <ñ, !, ^, B, X, I, Ch, G, Ĝ, H, J, K, L, M, Mb, N, Nd, Ng, Nt, Ñ, P, R, Rr, S, T, V}
+## accented vowels
+@V = {á, é, í, ó, ú, ý, Á, É, Í, Ó, Ú, Ý}
+## vowels that precede i in -ite(rei)
+@u = {a, u, á, ú, ã, ũ, A, U, Á, Ú, Ã, Ũ}
+@o = {i, o, y, í, ó, ý, ĩ, õ, ỹ, I, O, Y, Í, Ó, Ý, Ĩ, Õ, Ỹ}
+## i
+@i = {i, í, ĩ}
+## all nasal segments
+@n = {ã, ẽ, ĩ, õ, ũ, ỹ, ĝ, m, mb, n, nd, ng, nt, ñ, <ñ, Ã, Ẽ, Ĩ, Õ, Ũ, Ỹ, Ĝ, M, Mb, N, Nd, Ng, Nt, Ñ}
+## nasal vowels
+@N = {ã, ẽ, ĩ, õ, ũ, ỹ, Ã, Ẽ, Ĩ, Õ, Ũ, Ỹ}
+## "real" nasal segments
+@M = {ã, ẽ, ĩ, õ, ũ, ỹ, ĝ, m, n, ñ, <ñ, Ã, Ẽ, Ĩ, Õ, Ũ, Ỹ, Ĝ, M, N, Ñ}
+
+### FSTs
+## Realiza valores de J, I, E por defecto;
+## suprime !, ^, >
+>dflt_n.ar<
+# Accent first unaccented character before !
+>accV_c_n<
+# Eliminate all but last accented character
+>deacc_n<
+>acc<
+## -ete, -ite, -te
+>Ete_n<
+>PK<
+# 3p prefixes
+>J.ar<
+>s3_n<
+# morphotactics
+>n.mtx<

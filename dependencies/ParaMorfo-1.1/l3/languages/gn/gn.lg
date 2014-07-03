@@ -1,0 +1,338 @@
+name: guaraní
+
+lang backup: es
+
+seg: a e i o u y á é í ó ú ý ã ẽ ĩ õ ũ ỹ
+     h j l ñ p s t v ' g ĝ k
+     A E I O U Y Á É Í Ó Ú Ý Ã Ẽ Ĩ Õ Ũ Ỹ
+     G Ĝ H J K L Ñ P S T V G Ĝ K
+     ch m mb n nd nt ng r rr
+     <h <j <ñ <H <J <Ñ
+     Ch M Mb N Nd Nt Ng R Rr
+
+feats:
+
+  pos: va
+
+  +1,-2,-p = 1 persona singular
+  -1,+2,-p = 2 persona singular
+  -1,-2 = 3 persona o ausente
+  +1,+2,+p = 1 persona inclusiva
+  +1,-2,+p = 1 persona exclusiva
+  -1,+2,+p = 2 persona plural
+
+  rel (relativo) = *False | True
+
+  nte1 = *False | *True
+  nte2 = *False | *True
+
+  neg (negativo) = *False | True
+  neg1 (negativo) = *False | *True
+#  neg2 (negativo 2) = *False | True
+  inter (interrogativo) = *False | True
+  *%trans (transitivo) = False | True
+  *%rztrans (raíz transitiva) = False | True
+
+  *%cat (categoría) = a | che
+  *%subcat (subcategoría) = 0 | i | gue
+
+  %t (traducción de raíz) = es = 
+  
+  mod (modo) = ind (indicativo) |
+               imp (imperativo) |
+               opt (optativo)
+
+  sj (sujeto) = 1 = False | True;
+                2 = False | True;
+                p (plural) = False | True
+
+  oj (objeto) = 1 = False | True;
+                2 = False | True;
+                p (plural) = False | True;
+                *%r (reflexivo) = False | True
+
+  voz = smp (simple) |
+        intrans (intransitivo) |
+        caus (causativo) |
+        reflx (reflexivo) |
+        recip (recíproco) |
+        intrans_caus (intransitivo causativo) |
+        reflx_caus (reflexivo causativo) |
+        recip_caus (recíproco causativo)
+#        intrans_caus_reflx (intransitivo causativo reflexivo) |
+#        intrans_caus_recip (intransitivo causativo recíproco)
+
+  grd (grado) = *None |
+                compsup (comparativo de superioridad) |
+                compinf (comparativo de inferioridad) |
+                sup (superlativo) |
+                supsup (supersuperlativo) |
+                supis (superlativísimo) |
+                ultsup (ultrasuperlativo)
+
+  tmp (tiempo) = pres (presente) |
+                 pret (pretérito) |
+                 fut (futuro)
+
+  tasp (aspecto temporal) = plus (pluscuamperfecto) = False | True;
+      		  	    obl (obligatorio) = False | True;
+                            rec (reciente) = False | True;
+			    prox (próximo) = False | True;
+                 	    hab (habitual) = False | True;
+		  	    impf (imperfecto) = False | True;
+		  	    nec (necesario) = False | True;
+			    perf (perfecto) = False | True;
+		  	    dud (dudoso) = False | True;
+		  	    cont (continuativo) = False | True;
+			    rem (remoto) = False | True;
+    			    ant (anterior) = False | True;
+			    inmit (intermitente) = False | True
+
+  asp (aspecto) = vol (volitivo) = False | True;
+      	          obl (obligatorio) = False | True;
+                  supos (supositivo) = False | True;
+                  conjet (conjetural) = False | True;
+                  tot (totalitativo) = False | True;
+                  cuasiacc (cuasiaccional) = False | True;
+                  med (mediativo) = False | True;
+                  conmit (conminativo) = False | True;
+                  amis (amistoso) = False | True;
+                  car (cariñoso) = False | True;
+                  enf (enfático) = False | True;
+                  comp (compuesto) = False | True;
+                  loc (locativo) = False | True;
+                  concom (concomitante) = False | True;
+                  prox (proximal) = False | True;
+                  colec (colectivo) = False | True;
+                  narver (narrativo verosímil) = False | True;
+                  narinver (narrativo inverosímil) = False | True;
+                  anhel (anhelativo) = False | True;
+                  apar (aparencial) = False | True;
+                  piet (pietativo) = False | True;
+                  frec (frecuentativo) = False | True;
+                  frecenf (frecuentativo enfático) = False | True;
+                  frus (frustrativo) = False | True;
+                  inten (intencional) = False | True;
+                  antel (antelativo) = False | True;
+                  cond (condicional) = False | True;
+                  asev (aseverativo) = False | True;
+                  admir (admirativo) = False | True;
+                  reit (reiterativo) = False | True;
+                  afir (afirmativo) = False | True;
+                  dubit (dubitativo) = False | True;
+                  usual = False | True;
+                  enun (enunciativo) = False | True;
+                  real = False | True;
+                  prec (precario) = False | True;
+		  pers (persistencial) = False | True;   # meme
+		  persis (persistente) = False | True;   # gueteri
+                  permdec (permisivo de decisión) = False | True;
+		  incep (inceptivo) = False | True;
+                  prim (primitivo) = False | True;     # primera vez
+		  sim (simulativo) = False | True;
+		  simul (simultáneo) = False | True;
+		  intermed (intermediativo) = False | True;
+		  conf (confirmativo) = False | True;
+		  proc (procedente) = False | True;
+		  neg (negativo) = False | True        # 'ỹre 'sin que'
+
+  caso = *None |
+         pe |
+         gui |
+         re |
+         icha |
+         rã
+
+  pos: vc
+
+  +1,-2,-p = 1 persona singular
+  -1,+2,-p = 2 persona singular
+  -1,-2 = 3 persona
+  +1,+2,+p = 1 persona inclusiva
+  +1,-2,+p = 1 persona exclusiva
+  -1,+2,+p = 2 persona plural
+
+  rel (relativo) = *False | True
+
+  nte1 = *False | *True
+  nte2 = *False | *True
+
+  neg (negativo) = *False | True
+  neg1 (negativo 1) = *False | *True
+  inter (interrogativo) = *False | True
+  *%trans (transitivo) = False | True
+  *%rztrans (raíz transitiva) = False | True
+
+  *%cat (categoría) = a | che
+  *%subcat (subcategoría) = 
+
+  %t (traducción de raíz) = es = 
+  
+  mod (modo) = ind (indicativo) |
+               imp (imperativo) |
+               opt (optativo)
+
+  sj (sujeto) = 1 = False | True;
+                2 = False | True;
+                p (plural) = False | True
+
+  # todos intransitivos
+  *oj =
+
+  voz = smp (simple)
+#        intrans (intransitivo) |
+#        caus (causativo) |
+#        reflx (reflexivo) |
+#        recip (recíproco) |
+#        intrans_caus (intransitivo causativo) |
+#        reflx_caus (reflexivo causativo) |
+#        recip_caus (recíproco causativo) |
+#        intrans_caus_reflx (intransitivo causativo reflexivo) |
+#        intrans_caus_recip (intransitivo causativo recíproco)
+
+  grd (grado) = *None |
+                compsup (comparativo de superioridad) |
+                compinf (comparativo de inferioridad) |
+                sup (superlativo) |
+                supsup (supersuperlativo) |
+                supis (superlativísimo) |
+                ultsup (ultrasuperlativo)
+
+  tmp (tiempo) = pres (presente) |
+                 pret (pretérito) |
+                 fut (futuro)
+
+  tasp (aspecto temporal) = plus (pluscuamperfecto) = False | True;
+      		  	    obl (obligatorio) = False | True;
+                            rec (reciente) = False | True;
+			    prox (próximo) = False | True;
+                 	    hab (habitual) = False | True;
+		  	    impf (imperfecto) = False | True;
+		  	    nec (necesario) = False | True;
+			    perf (perfecto) = False | True;
+		  	    dud (dudoso) = False | True;
+		  	    cont (continuativo) = False | True;
+			    rem (remoto) = False | True;
+    			    ant (anterior) = False | True;
+			    inmit (intermitente) = False | True
+
+  asp (aspecto) = vol (volitivo) = False | True;
+   		  obl (obligatorio) = False | True;
+                  supos (supositivo) = False | True;
+                  conjet (conjetural) = False | True;
+                  tot (totalitativo) = False | True;
+                  cuasiacc (cuasiaccional) = False | True;
+                  med (mediativo) = False | True;
+                  conmit (conminativo) = False | True;
+                  amis (amistoso) = False | True;
+                  car (cariñoso) = False | True;
+                  enf (enfático) = False | True;
+                  comp (compuesto) = False | True;
+                  loc (locativo) = False | True;
+                  concom (concomitante) = False | True;
+                  prox (proximal) = False | True;
+                  colec (colectivo) = False | True;
+                  narver (narrativo verosímil) = False | True;
+                  narinver (narrativo inverosímil) = False | True;
+                  anhel (anhelativo) = False | True;
+                  apar (aparencial) = False | True;
+                  piet (pietativo) = False | True;
+                  frec (frecuentativo) = False | True;
+                  frecenf (frecuentativo enfático) = False | True;
+                  frus (frustrativo) = False | True;
+                  inten (intencional) = False | True;
+                  antel (antelativo) = False | True;
+                  cond (condicional) = False | True;
+                  asev (aseverativo) = False | True;
+                  admir (admirativo) = False | True;
+                  reit (reiterativo) = False | True;
+                  afir (afirmativo) = False | True;
+                  dubit (dubitativo) = False | True;
+                  usual = False | True;
+                  enun (enunciativo) = False | True;
+                  real = False | True;
+                  prec (precario) = False | True;
+		  pers (persistencial) = False | True;   # meme
+		  persis (persistente) = False | True;   # gueteri
+                  permdec (permisivo de decisión) = False | True;
+		  incep (inceptivo) = False | True;
+                  prim (primitivo) = False | True;     # primera vez
+		  sim (simulativo) = False | True;
+		  simul (simultáneo) = False | True;   # kuévo
+		  intermed (intermediativo) = False | True;
+		  conf (confirmativo) = False | True;
+		  proc (procedente) = False | True;
+		  neg (negativo) = False | True        # 'ỹre 'sin que'
+
+  caso = *None |
+         pe |
+         gui |
+         re |
+         icha |
+         rã
+
+  pos: n
+
+  inter (interrogativo) = *False | True
+  neg (negativo) = *False | True
+  pl (plural) = *False | True
+  restr = *False | True
+  dim = *False | True
+  conjet = *False | True
+  afir = *False | True
+  adj = *False | True
+  concom = *False | True
+  narver = *False | True
+  pas = *False | True
+  fut = *False | True
+
+  caso = *None |
+         pe |
+         gui |
+         re |
+         vo |
+         icha |
+	 ichagua |
+         gua |
+         ve |
+         rã |
+         ndi |
+	 pype |
+	 ypype |
+ 	 ari
+
+  grd (grado) = *None |
+                compsup (comparativo de superioridad) |
+                compinf (comparativo de inferioridad) |
+                sup (superlativo) |
+                supsup (supersuperlativo) |
+                supis (superlativísimo) |
+                ultsup (ultrasuperlativo)
+
+  poses (posesivo) = *None |
+                     3 = False | True;
+                     pron (pronominal) = False | True;
+
+  %t (traducción de raíz) = es = 
+  
+trans:
+  Loading morphological data for {0}{1} ... = Cargando datos morfológicos para {0}{1} ...
+  word = ñe'ẽ
+  root = ñe'ẽrapo
+  syllable = ñe'ẽpehẽ
+  semantics = ñe'ẽpykuaa
+  phonology = ñe'ẽpukuaa
+  syntax = ñe'ẽjoajungatu
+  morphology = ñe'ẽysajakuaa
+  grammar = ñe'ẽtekuaa
+  affix = ñe'ẽpehẽtai
+  verb = ñe'ẽtéva
+  v = ñe'ẽtéva
+  noun = tero
+  adjective = teroja
+  pronoun = terarãngue
+  adverb = ñe'ẽteja
+  agreement = ñembojoja
+  subject = teroñe’ẽ
+  postposition = ñe'ẽriregua
+  POS = CG

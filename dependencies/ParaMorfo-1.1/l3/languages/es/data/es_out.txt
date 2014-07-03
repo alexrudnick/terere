@@ -1,0 +1,2223 @@
+?word: --
+
+?word: Sí
+
+palabra: ,
+
+palabra: sí
+
+palabra: ,
+
+palabra: hoy
+raíz = <hoy>
+  pos = n
+
+palabra: estaba
+raíz = <estar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <estar>
+  pos = v
+  tiempo/aspecto/modo = imperfecto, subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+raíz = <estar>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: muy
+
+palabra: hermosa
+raíz = <hermoso>
+  pos = a
+  género = femenino
+
+palabra: .
+
+?word: Dime
+
+palabra: ,
+
+palabra: tú
+
+palabra: ,
+
+palabra: espejo
+raíz = <espejo>
+  pos = n
+
+palabra: :
+
+palabra: ¿
+
+palabra: la
+
+palabra: querrá
+raíz = <querer>
+  pos = v
+  tiempo/aspecto/modo = futuro
+  sujeto = 3 persona singular
+
+?word: Juan
+
+palabra: ?
+
+palabra: ¿
+
+palabra: la
+
+palabra: querrá
+raíz = <querer>
+  pos = v
+  tiempo/aspecto/modo = futuro
+  sujeto = 3 persona singular
+
+?word: Juan
+
+palabra: ?
+
+palabra: ¿
+
+?word: Por
+
+palabra: qué
+
+palabra: no
+
+palabra: soy
+raíz = <ser>
+  pos = v
+  sujeto = 1 persona singular
+
+palabra: como
+
+palabra: ella
+
+palabra: ?
+
+?word: Me
+
+palabra: rasgaría
+raíz = <rasgar>
+  pos = v
+  tiempo/aspecto/modo = condicional
+  sujeto = 1/3 persona singular
+
+palabra: las
+
+palabra: carnes
+raíz = <carne>
+  pos = n
+  número = plural
+
+palabra: :
+
+palabra: me
+
+palabra: abriría
+raíz = <abrir>
+  pos = v
+  tiempo/aspecto/modo = condicional
+  sujeto = 1/3 persona singular
+
+palabra: con
+
+palabra: las
+
+palabra: uñas
+raíz = <uña>
+  pos = n
+  número = plural
+
+palabra: las
+
+palabra: mejillas
+raíz = <mejilla>
+  pos = n
+  número = plural
+
+palabra: .
+
+?word: Cara
+
+palabra: imbécil
+raíz = <imbécil>
+  pos = n
+
+palabra: ,
+
+palabra: ¿
+
+palabra: por
+
+palabra: qué
+
+palabra: no
+
+palabra: soy
+raíz = <ser>
+  pos = v
+  sujeto = 1 persona singular
+
+palabra: como
+
+palabra: ella
+
+palabra: ?
+
+?word: Hoy
+
+palabra: estaba
+raíz = <estar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <estar>
+  pos = v
+  tiempo/aspecto/modo = imperfecto, subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+raíz = <estar>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: muy
+
+palabra: hermosa
+raíz = <hermoso>
+  pos = a
+  género = femenino
+
+palabra: .
+
+?word: Se
+
+palabra: le
+
+palabra: veía
+raíz = <ver>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+raíz = <ver>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <ver>
+  pos = v
+  tiempo/aspecto/modo = imperfecto, subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: la
+
+palabra: sangre
+raíz = <sangre>
+  pos = n
+
+palabra: y
+
+palabra: se
+
+palabra: le
+
+palabra: sentía
+raíz = <sentir>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+raíz = <sentir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: el
+
+palabra: perfume
+raíz = <perfume>
+  pos = n
+
+palabra: por
+
+?word: debajo
+
+palabra: de
+
+palabra: la
+
+palabra: muselina
+raíz = <muselina>
+  pos = n
+
+palabra: blanca
+raíz = <blanco>
+  pos = a
+  género = femenino
+raíz = <blanca>
+  pos = n
+
+palabra: .
+
+palabra: y
+
+palabra: se
+
+palabra: sentaba
+raíz = <sentar>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+raíz = <sentar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+?word: Lucía
+
+palabra: ,
+
+palabra: sola
+raíz = <solo>
+  pos = a
+  género = femenino
+
+palabra: en
+
+palabra: su
+
+palabra: cuarto
+raíz = <cuarto>
+  pos = n
+
+palabra: en
+
+palabra: una
+
+palabra: silla
+raíz = <silla>
+  pos = n
+
+palabra: sin
+
+palabra: espaldar
+raíz = <espaldar>
+  pos = n
+
+palabra: ,
+
+palabra: sin
+
+palabra: quitarse
+raíz = <quitar>
+  +reflexivo
+  complemento directo = ninguno
+  tiempo/aspecto/modo = infinitivo
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <quitar>
+  +reflexivo
+  complemento directo = ninguno
+  tiempo/aspecto/modo = infinitivo
+  sujeto = 2/3 persona plural
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: los
+
+palabra: vestidos
+raíz = <vestido>
+  pos = n
+  número = plural
+
+palabra: ,
+
+?word: ya
+
+palabra: a
+
+palabra: más
+
+palabra: de
+
+palabra: medianoche
+raíz = <medianoche>
+  pos = n
+
+palabra: ,
+
+palabra: y
+
+palabra: a
+
+palabra: poco
+raíz = <poco>
+  pos = a
+raíz = <poco>
+  pos = n
+
+palabra: rato
+raíz = <rato>
+  pos = n
+
+palabra: se
+
+palabra: levantaba
+raíz = <levantar>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+raíz = <levantar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: ,
+
+palabra: se
+
+palabra: miraba
+raíz = <mirar>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+raíz = <mirar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+?word: otra
+
+palabra: vez
+raíz = <vez>
+  pos = n
+
+palabra: al
+
+palabra: espejo
+raíz = <espejo>
+  pos = n
+
+palabra: ,
+
+palabra: y
+
+palabra: se
+
+palabra: sentaba
+raíz = <sentar>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+raíz = <sentar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+?word: nuevamente
+
+palabra: ,
+
+palabra: la
+
+palabra: cara
+raíz = <caro>
+  pos = a
+  género = femenino
+raíz = <cara>
+  pos = n
+
+palabra: entre
+
+palabra: las
+
+palabra: manos
+raíz = <mano>
+  pos = n
+  número = plural
+
+palabra: ,
+
+palabra: los
+
+palabra: codos
+raíz = <codo>
+  pos = n
+  número = plural
+
+palabra: en
+
+palabra: las
+
+palabra: rodillas
+raíz = <rodilla>
+  pos = n
+  número = plural
+
+palabra: .
+
+?word: Luego
+
+palabra: rompía
+raíz = <romper>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+raíz = <romper>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: a
+
+palabra: hablarse
+raíz = <hablar>
+  +reflexivo
+  complemento directo = ninguno
+  tiempo/aspecto/modo = infinitivo
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <hablar>
+  +reflexivo
+  complemento directo = ninguno
+  tiempo/aspecto/modo = infinitivo
+  sujeto = 2/3 persona plural
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: :
+
+?word: --
+
+?word: Yo
+
+palabra: me
+
+palabra: veo
+raíz = <ver>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 1 persona singular
+
+palabra: ,
+
+palabra: sí
+
+palabra: ,
+
+palabra: yo
+
+palabra: me
+
+palabra: veo
+raíz = <ver>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 1 persona singular
+
+palabra: .
+
+palabra: ¿
+
+?word: Qué
+
+palabra: es
+raíz = <ser>
+  pos = v
+  sujeto = 3 persona singular
+
+palabra: lo
+
+palabra: que
+
+palabra: tengo
+raíz = <tener>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 1 persona singular
+
+palabra: ,
+
+palabra: que
+
+palabra: me
+
+palabra: parezco
+raíz = <parecer>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 1 persona singular
+
+palabra: fea
+raíz = <feo>
+  pos = a
+  género = femenino
+
+palabra: a
+
+palabra: mí
+
+palabra: misma
+raíz = <mismo>
+  pos = a
+  género = femenino
+
+palabra: ?
+
+?word: Y
+
+palabra: yo
+
+palabra: no
+
+palabra: lo
+
+palabra: soy
+raíz = <ser>
+  pos = v
+  sujeto = 1 persona singular
+
+palabra: ,
+
+palabra: pero
+
+palabra: lo
+
+palabra: estoy
+raíz = <estar>
+  pos = v
+  sujeto = 1 persona singular
+
+palabra: siendo
+raíz = <ser>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  complemento indirecto = ninguno
+  pos = v
+
+palabra: .
+
+?word: Juan
+
+palabra: lo
+
+palabra: ha
+raíz = <haber>
+  pos = v
+  sujeto = 3 persona singular
+
+palabra: de
+
+palabra: ver
+raíz = <ver>
+  pos = n
+
+palabra: ;
+
+?word: Juan
+
+palabra: ha
+raíz = <haber>
+  pos = v
+  sujeto = 3 persona singular
+
+palabra: de
+
+palabra: ver
+raíz = <ver>
+  pos = n
+
+palabra: que
+
+palabra: estoy
+raíz = <estar>
+  pos = v
+  sujeto = 1 persona singular
+
+palabra: siendo
+raíz = <ser>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  complemento indirecto = ninguno
+  pos = v
+
+palabra: fea
+raíz = <feo>
+  pos = a
+  género = femenino
+
+palabra: .
+
+palabra: ¡
+
+?word: Ay
+
+palabra: !
+
+palabra: ¡
+
+palabra: por
+
+palabra: qué
+
+palabra: tengo
+raíz = <tener>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 1 persona singular
+
+palabra: este
+raíz = <este>
+  pos = n
+
+palabra: miedo
+raíz = <miedo>
+  pos = n
+
+palabra: !
+
+palabra: ¿
+
+?word: Quién
+
+palabra: es
+raíz = <ser>
+  pos = v
+  sujeto = 3 persona singular
+
+palabra: mejor
+raíz = <mejor>
+  pos = a
+raíz = <mejor>
+  pos = n
+
+palabra: que
+
+?word: Juan
+
+palabra: en
+
+palabra: todo
+
+palabra: el
+
+palabra: mundo
+raíz = <mundo>
+  pos = n
+
+palabra: ?
+
+palabra: ¿
+
+?word: Cómo
+
+palabra: no
+
+palabra: me
+
+palabra: ha
+raíz = <haber>
+  pos = v
+  sujeto = 3 persona singular
+
+palabra: de
+
+palabra: querer
+raíz = <querer>
+  pos = n
+
+palabra: él
+
+palabra: a
+
+palabra: mí
+
+palabra: ,
+
+palabra: si
+
+palabra: él
+
+palabra: quiere
+raíz = <querer>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+
+palabra: a
+
+palabra: todo
+
+palabra: el
+
+palabra: que
+
+palabra: lo
+
+palabra: quiere
+raíz = <querer>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+
+palabra: ?
+
+palabra: ¿
+
+palabra: quién
+
+palabra: ,
+
+palabra: quién
+
+palabra: lo
+
+palabra: quiere
+raíz = <querer>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+
+palabra: a
+
+palabra: él
+
+palabra: más
+
+palabra: que
+
+palabra: yo
+
+palabra: ?
+
+palabra: yo
+
+palabra: me
+
+palabra: echaría
+raíz = <echar>
+  pos = v
+  tiempo/aspecto/modo = condicional
+  sujeto = 1/3 persona singular
+
+palabra: a
+
+palabra: sus
+
+palabra: pies
+raíz = <pie>
+  pos = n
+  número = plural
+
+palabra: .
+
+?word: Yo
+
+palabra: le
+
+palabra: besaría
+raíz = <besar>
+  pos = v
+  tiempo/aspecto/modo = condicional
+  sujeto = 1/3 persona singular
+
+?word: siempre
+
+palabra: las
+
+palabra: manos
+raíz = <mano>
+  pos = n
+  número = plural
+
+palabra: .
+
+?word: Yo
+
+palabra: le
+
+palabra: tendría
+raíz = <tener>
+  pos = v
+  tiempo/aspecto/modo = condicional
+  sujeto = 1/3 persona singular
+
+?word: siempre
+
+palabra: la
+
+palabra: cabeza
+raíz = <cabeza>
+  pos = n
+
+palabra: apretada
+raíz = <apretar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = participio
+  referente = femenino/a
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: sobre
+
+palabra: mi
+
+palabra: corazón
+raíz = <corazón>
+  pos = n
+
+palabra: .
+
+palabra: ¡
+
+?word: Y
+
+?word: esto
+
+?word: ni
+
+palabra: se
+
+palabra: puede
+raíz = <poder>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+raíz = <poder>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: decir
+raíz = <decir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = ninguno
+  pos = v
+
+palabra: ,
+
+?word: esto
+
+palabra: que
+
+palabra: yo
+
+palabra: quisiera
+raíz = <querer>
+  pos = v
+  tiempo/aspecto/modo = subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: hacer
+raíz = <hacer>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = ninguno
+  pos = v
+
+palabra: !
+
+?word: Si
+
+palabra: yo
+
+palabra: pudiera
+raíz = <poder>
+  pos = v
+  tiempo/aspecto/modo = subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: hacer
+raíz = <hacer>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = ninguno
+  pos = v
+
+?word: esto
+
+palabra: ,
+
+palabra: él
+
+palabra: sentiría
+raíz = <sentir>
+  pos = v
+  tiempo/aspecto/modo = condicional
+  sujeto = 1/3 persona singular
+
+palabra: todo
+
+palabra: lo
+
+palabra: que
+
+palabra: yo
+
+palabra: lo
+
+palabra: quiero
+raíz = <querer>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 1 persona singular
+
+palabra: ,
+
+palabra: y
+
+palabra: no
+
+palabra: podría
+raíz = <poder>
+  pos = v
+  tiempo/aspecto/modo = condicional
+  sujeto = 1/3 persona singular
+
+palabra: querer
+raíz = <querer>
+  pos = n
+
+palabra: a
+
+palabra: más
+
+?word: nadie
+
+palabra: .
+
+palabra: ¡
+
+?word: Sol
+
+palabra: !
+
+palabra: ¡
+
+?word: Sol
+
+palabra: !
+
+palabra: ¿
+
+palabra: quién
+
+palabra: es
+raíz = <ser>
+  pos = v
+  sujeto = 3 persona singular
+
+?word: Sol
+
+palabra: para
+
+palabra: quererlo
+raíz = <querer>
+  pos = v
+  complemento directo = 3 persona singular, masculino/a
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = ninguno
+
+palabra: como
+
+palabra: yo
+
+palabra: lo
+
+palabra: quiero
+raíz = <querer>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 1 persona singular
+
+palabra: ?
+
+palabra: ¡
+
+?word: Juan
+
+?word: !...
+
+palabra: ¡
+
+?word: Juan
+
+?word: !...
+
+palabra: y
+
+palabra: conteniendo
+raíz = <contener>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  complemento indirecto = ninguno
+  pos = v
+
+palabra: la
+
+palabra: voz
+raíz = <voz>
+  pos = n
+
+palabra: se
+
+palabra: iba
+raíz = <ir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <ir>
+  pos = v
+  tiempo/aspecto/modo = imperfecto, subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+raíz = <ir>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: hacia
+
+palabra: la
+
+palabra: ventana
+raíz = <ventana>
+  pos = n
+
+palabra: abierta
+raíz = <abierto>
+  pos = a
+  género = femenino
+
+palabra: ,
+
+palabra: y
+
+palabra: tendía
+raíz = <tender>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <tender>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: las
+
+palabra: manos
+raíz = <mano>
+  pos = n
+  número = plural
+
+palabra: como
+
+palabra: sin
+
+palabra: querer
+raíz = <querer>
+  pos = n
+
+palabra: ,
+
+palabra: llamando
+raíz = <llamar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  complemento indirecto = ninguno
+  pos = v
+
+palabra: a
+
+?word: Juan
+
+palabra: a
+
+palabra: quien
+
+palabra: acababa
+raíz = <acabar>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+raíz = <acabar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: de
+
+palabra: escribir
+raíz = <escribir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = ninguno
+  pos = v
+
+palabra: sin
+
+palabra: decirle
+raíz = <decir>
+  pos = v
+  complemento directo = 3 persona singular, +anim
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = ninguno
+raíz = <decir>
+  pos = v
+  complemento directo = ninguno
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = 3 persona singular
+
+palabra: que
+
+palabra: viniese
+raíz = <venir>
+  pos = v
+  tiempo/aspecto/modo = subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: .
+
+palabra: empujó
+raíz = <empujar>
+  pos = v
+  tiempo/aspecto/modo = +pretérito
+  sujeto = 3 persona singular
+
+?word: violentamente
+
+palabra: las
+
+palabra: dos
+
+palabra: hojas
+raíz = <hoja>
+  pos = n
+  número = plural
+
+palabra: de
+
+palabra: la
+
+palabra: ventana
+raíz = <ventana>
+  pos = n
+
+palabra: ,
+
+palabra: y
+
+palabra: arrodillándose
+raíz = <arrodillar>
+  +reflexivo
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  sujeto = 2/3 persona plural
+  pos = v
+  complemento indirecto = ninguno
+raíz = <arrodillar>
+  +reflexivo
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: de
+
+?word: repente
+
+palabra: junto
+raíz = <junto>
+  pos = a
+
+palabra: a
+
+palabra: ella
+
+palabra: ,
+
+palabra: sacó
+raíz = <sacar>
+  pos = v
+  tiempo/aspecto/modo = +pretérito
+  sujeto = 3 persona singular
+
+palabra: afuera
+raíz = <afuera>
+  pos = n
+
+palabra: ,
+
+palabra: como
+
+palabra: a
+
+palabra: que
+
+palabra: el
+
+palabra: aire
+raíz = <aire>
+  pos = n
+
+palabra: se
+
+palabra: la
+
+palabra: humedeciese
+raíz = <humedecer>
+  pos = v
+  tiempo/aspecto/modo = subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: ,
+
+palabra: la
+
+palabra: cabeza
+raíz = <cabeza>
+  pos = n
+
+palabra: ;
+
+palabra: y
+
+palabra: la
+
+palabra: tuvo
+raíz = <tener>
+  pos = v
+  tiempo/aspecto/modo = pretérito
+  sujeto = 3 persona singular
+
+palabra: apoyada
+raíz = <apoyar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = participio
+  referente = femenino/a
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: algún
+
+palabra: tiempo
+raíz = <tiempo>
+  pos = n
+
+palabra: sobre
+
+palabra: el
+
+palabra: marco
+raíz = <marco>
+  pos = n
+
+palabra: ,
+
+palabra: sin
+
+palabra: que
+
+palabra: le
+
+palabra: molestase
+raíz = <molestar>
+  pos = v
+  tiempo/aspecto/modo = subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+
+?word: aquella
+
+palabra: almohada
+raíz = <almohada>
+  pos = n
+
+palabra: de
+
+palabra: madera
+raíz = <madera>
+  pos = n
+
+palabra: .
+
+?word: --¡
+
+?word: No
+
+palabra: puede
+raíz = <poder>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+raíz = <poder>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: ser
+raíz = <ser>
+  pos = n
+
+palabra: !
+
+palabra: ¡
+
+palabra: no
+
+palabra: puede
+raíz = <poder>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+raíz = <poder>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: ser
+raíz = <ser>
+  pos = n
+
+?word: !--
+
+palabra: dijo
+raíz = <decir>
+  pos = v
+  tiempo/aspecto/modo = pretérito
+  sujeto = 3 persona singular
+
+palabra: levantándose
+raíz = <levantar>
+  +reflexivo
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  sujeto = 2/3 persona plural
+  pos = v
+  complemento indirecto = ninguno
+raíz = <levantar>
+  +reflexivo
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: de
+
+palabra: pronto
+raíz = <pronto>
+  pos = n
+
+?word: --:
+
+?word: Juan
+
+palabra: va
+raíz = <ir>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+
+palabra: a
+
+palabra: quererla
+raíz = <querer>
+  pos = v
+  complemento directo = 3 persona singular, femenino/a
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = ninguno
+
+palabra: .
+
+?word: Lo
+
+palabra: conozco
+raíz = <conocer>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 1 persona singular
+
+palabra: cada
+
+palabra: vez
+raíz = <vez>
+  pos = n
+
+palabra: que
+
+palabra: la
+
+palabra: mira
+raíz = <mira>
+  pos = n
+
+palabra: .
+
+?word: Se
+
+palabra: sonríe
+raíz = <sonreír>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+
+palabra: ,
+
+palabra: con
+
+palabra: un
+
+palabra: cariño
+raíz = <cariño>
+  pos = n
+
+palabra: que
+
+palabra: me
+
+palabra: vuelve
+raíz = <volver>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+raíz = <volver>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: loca
+raíz = <loco>
+  pos = a
+  género = femenino
+raíz = <loca>
+  pos = n
+
+palabra: .
+
+?word: Se
+
+palabra: le
+
+palabra: ve
+raíz = <ir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <ver>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+raíz = <ver>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: ,
+
+palabra: se
+
+palabra: le
+
+palabra: ve
+raíz = <ir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <ver>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+raíz = <ver>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: que
+
+palabra: tiene
+raíz = <tener>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <tener>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 3 persona singular
+
+palabra: placer
+raíz = <placer>
+  pos = n
+
+palabra: en
+
+palabra: mirarla
+raíz = <mirar>
+  pos = v
+  complemento directo = 3 persona singular, femenino/a
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = ninguno
+
+palabra: .
+
+?word: Y
+
+?word: luego
+
+palabra: ¡
+
+?word: esa
+
+palabra: imbécil
+raíz = <imbécil>
+  pos = n
+
+palabra: es
+raíz = <ser>
+  pos = v
+  sujeto = 3 persona singular
+
+?word: tan
+
+palabra: buena
+raíz = <bueno>
+  pos = a
+  género = femenino
+
+palabra: !
+
+?word: No
+
+palabra: es
+raíz = <ser>
+  pos = v
+  sujeto = 3 persona singular
+
+palabra: mentira
+raíz = <mentira>
+  pos = n
+
+palabra: ,
+
+palabra: no
+
+palabra: :
+
+palabra: es
+raíz = <ser>
+  pos = v
+  sujeto = 3 persona singular
+
+palabra: buena
+raíz = <bueno>
+  pos = a
+  género = femenino
+
+palabra: .
+
+palabra: ¿
+
+?word: Yo
+
+palabra: misma
+raíz = <mismo>
+  pos = a
+  género = femenino
+
+palabra: ,
+
+palabra: yo
+
+palabra: misma
+raíz = <mismo>
+  pos = a
+  género = femenino
+
+palabra: no
+
+palabra: la
+
+palabra: quiero
+raíz = <querer>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 1 persona singular
+
+palabra: ?
+
+palabra: ¡
+
+?word: Sí
+
+palabra: ,
+
+palabra: la
+
+palabra: quiero
+raíz = <querer>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 1 persona singular
+
+palabra: ,
+
+palabra: y
+
+palabra: la
+
+palabra: odio
+raíz = <odio>
+  pos = n
+
+palabra: !
+
+palabra: ¿
+
+?word: Qué
+
+palabra: sé
+raíz = <ser>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <saber>
+  pos = v
+  sujeto = 1 persona singular
+
+palabra: yo
+
+palabra: qué
+
+palabra: es
+raíz = <ser>
+  pos = v
+  sujeto = 3 persona singular
+
+palabra: lo
+
+palabra: que
+
+palabra: me
+
+palabra: pasa
+raíz = <pasa>
+  pos = n
+
+palabra: por
+
+palabra: la
+
+palabra: cabeza
+raíz = <cabeza>
+  pos = n
+
+palabra: ?
+
+palabra: ¡
+
+?word: Juan
+
+palabra: ,
+
+?word: Juan
+
+palabra: ,
+
+palabra: ven
+raíz = <ver>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 2/3 persona plural
+raíz = <venir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperativo
+  sujeto = 2 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: pronto
+raíz = <pronto>
+  pos = n
+
+palabra: ;
+
+?word: Juan
+
+palabra: ,
+
+?word: Juan
+
+palabra: ,
+
+palabra: no
+
+palabra: vengas
+raíz = <vengar>
+  pos = v
+  tiempo/aspecto/modo = presente
+  sujeto = 2 persona singular
+
+palabra: !
+
+palabra: ¿
+
+?word: Cómo
+
+palabra: no
+
+palabra: ha
+raíz = <haber>
+  pos = v
+  sujeto = 3 persona singular
+
+palabra: de
+
+palabra: quererla
+raíz = <querer>
+  pos = v
+  complemento directo = 3 persona singular, femenino/a
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = ninguno
+
+?word: Juan
+
+?word: ?--
+
+palabra: decía
+raíz = <decir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <decir>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: la
+
+palabra: infeliz
+raíz = <infeliz>
+  pos = n
+
+palabra: ,
+
+palabra: entre
+
+palabra: golpes
+raíz = <golpe>
+  pos = n
+  número = plural
+
+palabra: de
+
+palabra: lágrimas
+raíz = <lágrima>
+  pos = n
+  número = plural
+
+palabra: ,
+
+palabra: a
+
+palabra: los
+
+palabra: pocos
+raíz = <poco>
+  pos = a
+  número = plural
+raíz = <poco>
+  pos = n
+  número = plural
+
+palabra: momentos
+raíz = <momento>
+  pos = n
+  número = plural
+
+palabra: ,
+
+palabra: siendo
+raíz = <ser>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  complemento indirecto = ninguno
+  pos = v
+
+?word: aquel
+
+palabra: llanto
+raíz = <llanto>
+  pos = n
+
+palabra: de
+
+?word: Lucía
+
+palabra: extraño
+raíz = <extraño>
+  pos = n
+
+palabra: ,
+
+palabra: porque
+
+palabra: no
+
+palabra: venía
+raíz = <venir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <venir>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: a
+
+?word: raudal
+
+palabra: y
+
+palabra: de
+
+palabra: seguida
+raíz = <seguir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = participio
+  referente = femenino/a
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: ,
+
+palabra: aliviando
+raíz = <aliviar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  complemento indirecto = ninguno
+  pos = v
+
+palabra: a
+
+palabra: la
+
+palabra: que
+
+palabra: lloraba
+raíz = <llorar>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+raíz = <llorar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: ,
+
+palabra: sino
+raíz = <sino>
+  pos = n
+
+palabra: a
+
+?word: borbotones
+
+?word: e
+
+palabra: intervalos
+raíz = <intervalo>
+  pos = n
+  número = plural
+
+palabra: ,
+
+palabra: sofocándola
+raíz = <sofocar>
+  pos = v
+  complemento directo = 3 persona singular, femenino/a
+  tiempo/aspecto/modo = gerundio
+  complemento indirecto = ninguno
+
+palabra: y
+
+palabra: exaltándola
+raíz = <exaltar>
+  pos = v
+  complemento directo = 3 persona singular, femenino/a
+  tiempo/aspecto/modo = gerundio
+  complemento indirecto = ninguno
+
+palabra: ,
+
+palabra: parecido
+raíz = <parecido>
+  pos = a
+raíz = <parecido>
+  pos = n
+
+palabra: al
+
+palabra: agua
+raíz = <agua>
+  pos = n
+
+palabra: que
+
+palabra: baja
+raíz = <bajo>
+  pos = a
+  género = femenino
+raíz = <baja>
+  pos = n
+
+palabra: ,
+
+palabra: tropezando
+raíz = <tropezar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = gerundio
+  complemento indirecto = ninguno
+  pos = v
+
+palabra: entre
+
+palabra: peñas
+raíz = <peña>
+  pos = n
+  número = plural
+
+palabra: ,
+
+palabra: por
+
+palabra: los
+
+palabra: torrentes
+raíz = <torrente>
+  pos = n
+  número = plural
+
+?word: --.
+
+palabra: ¿
+
+?word: Cómo
+
+palabra: no
+
+palabra: ha
+raíz = <haber>
+  pos = v
+  sujeto = 3 persona singular
+
+palabra: de
+
+palabra: quererla
+raíz = <querer>
+  pos = v
+  complemento directo = 3 persona singular, femenino/a
+  tiempo/aspecto/modo = infinitivo
+  complemento indirecto = ninguno
+
+?word: Juan
+
+palabra: ,
+
+palabra: si
+
+palabra: no
+
+?word: hay
+
+palabra: quien
+
+palabra: ame
+raíz = <amar>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+
+palabra: lo
+
+palabra: hermoso
+raíz = <hermoso>
+  pos = a
+
+palabra: más
+
+palabra: que
+
+palabra: él
+
+palabra: ,
+
+palabra: y
+
+palabra: la
+
+?word: Virgen
+
+palabra: de
+
+palabra: la
+
+?word: Piedad
+
+palabra: no
+
+palabra: es
+raíz = <ser>
+  pos = v
+  sujeto = 3 persona singular
+
+?word: tan
+
+palabra: hermosa
+raíz = <hermoso>
+  pos = a
+  género = femenino
+
+palabra: como
+
+palabra: ella
+
+palabra: ?
+
+?word: Juan
+
+?word: ....
+
+?word: Juan
+
+?word: ...--
+
+palabra: decía
+raíz = <decir>
+  complemento directo = ninguno
+  tiempo/aspecto/modo = imperfecto, subjuntivo presente
+  sujeto = 3 persona singular
+  pos = v
+  complemento indirecto = ninguno
+raíz = <decir>
+  pos = v
+  tiempo/aspecto/modo = imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: en
+
+palabra: voz
+raíz = <voz>
+  pos = n
+
+palabra: baja
+raíz = <bajo>
+  pos = a
+  género = femenino
+raíz = <baja>
+  pos = n
+
+palabra: ,
+
+palabra: como
+
+palabra: para
+
+palabra: que
+
+?word: Juan
+
+palabra: viniese
+raíz = <venir>
+  pos = v
+  tiempo/aspecto/modo = subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: sin
+
+palabra: que
+
+?word: nadie
+
+palabra: lo
+
+palabra: viera
+raíz = <ver>
+  pos = v
+  tiempo/aspecto/modo = subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+
+?word: --;
+
+palabra: ¡
+
+palabra: sin
+
+palabra: que
+
+?word: Sol
+
+palabra: lo
+
+palabra: viera
+raíz = <ver>
+  pos = v
+  tiempo/aspecto/modo = subjuntivo imperfecto
+  sujeto = 1/3 persona singular
+
+palabra: !
+

@@ -1,0 +1,56 @@
+## Verbos: chendal
+
+weighting = UNIFICATION
+
+### Character classes
+## All characters
+. = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', <h, <j, <ñ, !, R, $, E, I, D, J, P, %, *}
+## vowels
+@v = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, E, I}
+## real vowels
+@W = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ}
+## non-vowels and I; used in Ete.fst
+@c = {ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', <h, <j, <ñ, !, R, $, <, D, J, P, %, I, *}
+## accented vowels
+@V = {á, é, í, ó, ú, ý}
+## vowels that precede i in -ite(rei)
+## non-accented vowels
+@w = {a, e, i, o, u, y, ã, ẽ, ĩ, õ, ũ, ỹ, E}
+## vowels that precede i in -ite(rei)
+@u = {a, u, á, ú, ã, ũ}
+@o = {i, o, y, í, ó, ý, ĩ, õ, ỹ}
+## i
+@i = {i, í, ĩ}
+## nasal segments
+@n = {ã, ẽ, ĩ, õ, ũ, ỹ, ĝ, m, mb, n, nd, ng, nt, ñ, <ñ, D}
+## nasal root segments
+@N = {ã, ẽ, ĩ, õ, ũ, ỹ, ĝ, m, mb, n, nd, ng, nt, ñ, <ñ}
+## non-nasal segments
+@x = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ch, g, h, j, k, l, p, r, rr, s, t, v, ', <h, <j, !, R, $, <, E, I, P, %, *}
+## (pre)nasal archiphonemes
+@M = {D, J}
+
+### FSTs
+## Realiza valores de D, J, I, E por defecto;
+## suprime !, R, $
+>dflt.ar<
+## Realiza R como r después de @i
+>Racc.ar<
+# Accent first unaccented character before !
+>accV_c<
+# Eliminate all but last accented character
+>deacc<
+>acc<
+>del_acc<
+## -ete, -ite, -te
+>Ete<
+# Delete stem end mark %
+>stemmark.ar<
+# Realiza D y J
+>DJ<
+# Realiza P
+>P1.ar<
+# 3p sj prefix
+>s3<
+# morphotactics
+>vc.mtx<

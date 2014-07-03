@@ -1,0 +1,45 @@
+## Verbos: areal, aireal
+
+weighting = UNIFICATION
+
+### Clases de carácteres
+. = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', <h, <j, <ñ, !, R, $, <, E, I, B, D, J, P, T, K}
+## vowels
+@v = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ, E, I}
+## accented vowels, including nasals
+@V = {á, é, í, ó, ú, ý, ã, ẽ, ĩ, õ, ũ, ỹ}
+## vowels that precede i in -ite(rei)
+@u = {a, u}
+## i
+@i = {i, í, ĩ}
+## nasal segments
+@n = {ã, ẽ, ĩ, õ, ũ, ỹ, ĝ, m, mb, n, nd, ng, nt, ñ, B, D}
+## (pre)nasal archiphonemes
+@M = {B, D, J}
+
+## consonants
+# @c = {ch, g, ĝ, h, j, k, l, m, mb, n, nd, ng, nt, ñ, p, r, rr, s, t, v, ', <h, <j, <ñ}
+## oral segments
+#@o = {a, e, i, o, u, y, á, é, í, ó, ú, ý, ch, g, h, j, k, l, p, r, rr, s, t, v, ', E}
+
+### FSTs
+>dflt_a.ar<
+# Realize R as r after @i
+>Racc.ar<
+# Accent first unaccented character before !
+>acc2.ar<
+# Eliminate all !s after any accented character
+>acc1.ar<
+# Realiza P, K, T
+# >PTK2.ar<
+>PTK1.ar<
+# Fix problems with nas1
+>nas2.ar<
+# B -> m, D -> n, J -> ñ antes de nasales
+>nas1.ar<
+>te.ar<
+>ite.ar<
+# Realize <h as r, <j and <ñ as 0 when there's a preceding $
+>r0.ar<
+# morphotactics
+>va0.mtx<

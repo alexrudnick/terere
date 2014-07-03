@@ -1,0 +1,122 @@
+seg: a b d e f g h i j
+     m n ñ o p s t u v
+     x y z á é í ó ú ü
+     k w
+     c ch l ll qu r rr
+     A B D E F G H I J
+     M N Ñ O P S T U V
+     X Y Z Á É Í Ó Ú Ü
+     K W
+     C Ch L Ll Qu R
+     ! ' ` _
+
+
+feats:
+
+  pos: n
+  num (número) = *s | p
+#  ab: num = número
+  ab: p = plural
+  ab: s = singular
+
+  pos: a
+  num (número) = *s | p
+  gen (género) = *m | f
+#  ab: gen = género
+#  ab: num = número
+  ab: m = masculino
+  ab: f = femenino
+  ab: p = plural
+  ab: s = singular
+
+  pos: v
+
+  # Si un complemento no es explícito, no se muestran otras propiedades
+  !-xpl = ninguno
+  !+1,-p = 1 persona singular
+  !+2,-1,-p = 2 persona singular
+  -1,-2,-p = 3 persona singular
+  +1,+p = 1 persona plural
+  -1,+2,+p = 2 persona plural
+  -1,+p = 2/3 persona plural
+  -2,-p = 1/3 persona singular
+  -fem = masculino/a
+  +fem = femenino/a
+  -fut,-prt,-ipf,-cnd,-imv,-sub,+tmp = presente
+  +prt,-sub = pretérito
+  +cnd,+fut = condicional
+  -cnd,+fut = futuro
+  +ipf,+tmp = imperfecto
+  +imv,-tmp = imperativo
+  +sub,-prt = subjuntivo presente
+  +sub,+prt = subjuntivo imperfecto
+  +inf,-tmp = infinitivo
+  +ger,-tmp = gerundio
+  +part,-tmp = participio
+
+  sj (sujeto) = *1 = False | True;
+                *2 = False | True;
+                *p (plural) = False | True
+
+  od (complemento directo) [tam part False, tam prt False, tam fut False] =
+     		  	    *xpl (explícito) = False | True;
+                            *1 = False | True;
+                            *2 = False | True;
+                            *p (plural) = False | True;
+                            *fem (femenina) = False | True
+
+  oi (complemento indirecto) [tam part False, tam prt False, tam fut False] =
+                              *xpl (explícito) = False | True;
+                              *1 = False | True;
+                              *2 = False | True;
+                              *p (plural) = False | True;
+                              *fem (femenina) = False | True
+
+  ref (referente) [tam part True] =
+                   *xpl (explícito) = False | True;
+                   *1 = False | True [ref xpl True];
+                   *2 = False | True [ref xpl True];
+                   *p (plural) = False | True [ref xpl True];
+                   *fem (femenina) = False | True [ref xpl True]
+
+  tam (tiempo/aspecto/modo) =
+                 fut (futuro) = *False | True;
+                 prt (pretérito) = *False | True;
+                 sub (subjuntivo) = *False | True;
+                 ipf (imperfecto) = *False | True;
+                 cnd (condicional) = *False | True [tam fut True];
+                 imv (imperativo) = *False | True [tam tmp False];
+                 ger (gerundio) = *False | True [tam tmp False];
+		 inf (infinitivo) = *False | True [tam tmp False];
+                 part (participio) = *False | True [tam tmp False];
+                 *tmp (tiempo) = True | False
+
+  refl (reflexivo) = *False | True
+
+trans:
+  Loading morphological data for {0}{1} ... = Cargando datos morfológicos para {0}{1} ...
+  Make change to grammatical features? = ¿Cambiar propiedades gramaticales?
+  Please enter a digit between {0} and {1} = Por favor introduce un dígito entre {0} y {1}
+  Current grammatical features = Últimas propiedades gramaticales
+  You selected value {0} for {1} = Seleccionaste {0} para {1}
+  You selected feature {0} = Seleccionaste propiedad {0}
+  yes = sí
+  [{0}] Keep value at {1} = [{0}] Mantener valor {1}
+  Selection = Selección
+  Make another change to grammatical features? = ¿Cambiar otra propiedad gramatical?
+  Options = Opciones
+  True = +
+  False = -
+  word = palabra
+  root = raíz
+  affix = afijo
+  verb = verbo
+  v = verbo
+  noun = sustantivo
+  n = sustantivo
+  adjective = adjetivo
+  pronoun = pronombre
+  adverb = adverbio
+  POS = CG
+  Analyzing words in = Analizando palabras en
+  Writing analysis in = Escribiendo análisis en

@@ -1,0 +1,307 @@
+# irregular: ind, 1s, 3; imp 2s
+# regular: opt; neg; ind, 2; ind, 1p; imp 2p
+'a  [+neg];[mod=opt];
+    [mod=ind,sj=[+1,+p]];
+    [mod=ind,sj=[+2]];
+    [mod=imp,sj=[+p]]
+ararecha
+ñembo'euka
+ñemotenonde
+ñekytĩ
+chararã
+chini
+chinini
+chirirĩ
+chovi
+# dipara
+# falta
+guahu
+guapy
+guari
+guata
+gue
+guejy
+guevi
+guy
+guyguy
+# irregular
+ha  [mod=opt,sj=[+1]];
+    [mod=ind,sj=[+1,-p]];
+    [sj=[+1,+2]]
+ha'aresa
+<hasa
+<havi'u
+hayviru'i
+<hepyme'ẽ
+<hesapirĩ
+<heñói
+hu'u
+iko
+ikove
+ime
+imo'ã
+ĩ            [sj=[-1,-2]]
+# solo 3 persona
+hua'ĩ
+ja
+jahe'o
+jahu
+jaitypo
+jajái
+japajeréi
+japaro
+japasuru
+japete
+<japi
+japiro
+japysaka
+jarivo'o
+<javy
+jayvy
+je'o
+je'oi
+jeguaru
+jeheka
+jehekýi
+jehu
+jei
+jejavy
+jejavyky
+jejoko
+jejuhu
+jeka
+jekojoja
+jekuaa
+jepe'e
+jepoapi
+jepohéi
+jepokuaa
+jeporu
+jepy'apy
+jepytaso
+jera
+jere
+jereko
+jererojy
+jeroja
+jerojy
+jeroky
+jerovia
+jesape'a
+jesareko
+jetavy'o
+jetepyso
+jetyvyro
+joavy
+jogapo
+jogua
+joja
+jojuhu
+jojái
+joka
+jokuaa
+jopyru
+jopói
+jovái
+# irregular
+ju  [mod=imp|opt];
+    [mod=ind,sj=[+1]];
+    [mod=ind,sj=[+2]]
+juasa
+juavy
+juku'a
+jupi
+jy
+ka'api
+kacha
+kaka
+kakuaa
+kambu
+kapu
+karu
+kay'u
+kañy
+ñekañy
+ke
+kerai
+kirirĩ
+ko'i
+kororõ
+korói
+ku'e
+kuaru
+kuera
+kuerái
+kukúi
+kuru
+kyhyje
+ky
+kúi
+liga
+ma'ẽ
+mano
+marcha
+maña
+mba'apo
+mbohovái
+mbokapu
+mboyvytimbo
+menda
+mimbi
+minga
+mongeta
+mýi
+ndyry
+ndyryry
+ndyvu
+nguru
+ngururu
+no'õ
+pa
+pa'ã
+pararã
+pepe
+perere
+pi
+piriri
+piã
+po
+po'ẽ
+porandu
+porombo'e
+poromboekovia
+pororo
+poti
+poñy
+pu
+pu'ã
+puka
+pukavy
+pupu
+pururũ
+py'apopo
+pynõ
+pyta
+pytu'u
+pytuho
+pyvoi
+páy
+pẽ
+rambi
+rambosa
+rombyasy
+ropyhare
+ryrýi
+saingo
+sapukái
+sapymi
+so
+soro
+sunu
+sururu
+susũ
+syry
+syryry
+sysýi
+sẽ
+tarara
+timbo
+tiri
+tokoro'o
+tororõ
+tyky
+tytýi
+tĩ
+tũ'o
+va
+vale
+vava
+vera
+veve
+vira
+vu
+vy'a
+# 'yguy and 'yta
+# irregular: ind, 1s, 3; imp 2s
+# regular: opt; neg; ind, 2; ind, 1p; imp 2p
+'yguy [+neg];[mod=opt];
+      [mod=ind,sj=[+1,+p]];
+      [mod=ind,sj=[+2]];
+      [mod=imp,sj=[+p]]
+'yta  [+neg];[mod=opt];
+      [mod=ind,sj=[+1,+p]];
+      [mod=ind,sj=[+2]];
+      [mod=imp,sj=[+p]]
+ñakãity
+ñakãpytĩ
+ñalmira
+ñangareko
+ñangekói
+ñani
+ñapymi
+ñapĩ
+ñe'ẽ
+ñe'ẽmbegue
+ñe'ẽme'ẽ
+ñe'ẽpyta
+ñeha'ã
+ñehendyvapo
+ñehẽ
+ñeko'õi
+ñekuave'ẽ
+ñekũmberéi
+ñembo
+ñembo'e
+ñembo'y
+ñembohete
+ñembohory
+ñemboi
+ñemboja
+ñembojapiro
+ñembojapyro
+ñembojere
+ñemboki
+ñembosako'i
+ñembotavy
+ñembuesa'i
+ñembyai
+ñembyasy
+ñembyaty
+ñemi
+ñemo'ã
+ñemoambue
+ñemoatã
+ñemohenda
+ñemomarandu
+ñemomini
+ñemomombyry
+ñemomýi
+ñemonde
+ñemongeta
+ñemopa'ũ
+ñemoporã
+ñemoña
+ñemoĩ
+ñemu
+ñemyatã
+ñemyrõ
+ñemýi
+ñendyvu
+ñenguahẽ
+ñeno
+ñepysanga
+ñepyta'ã
+ñesũ
+ñetinga
+ñeñandu
+ñeñoña
+ñomomarandu
+ñomongeta
+ñopytyvõ
+ñorairõ
+ñorãirõ     ñorairõ
+ñovaitĩ
+ñuvaitĩ
+ñyñýi
+ĝuahẽ       guahẽ
+guahẽ
