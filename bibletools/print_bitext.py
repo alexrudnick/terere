@@ -39,7 +39,7 @@ def load_bible(fn):
             out[verseid] = text
     return out
 
-def shared_verses(bible1, bible2):
+def shared_verseids(bible1, bible2):
     """Given two hash tables, return the set of keys present in both."""
     keys1 = set(bible1.keys())
     keys2 = set(bible2.keys())
@@ -57,7 +57,52 @@ def get_argparser():
     parser.add_argument('--tokenize', default=True, action='store_true')
     parser.add_argument('--notokenize', default=False, dest='tokenize', action='store_false')
     parser.add_argument('--lemmatize', default=False, action='store_true')
+    parser.add_argument('--out', type=str, required=True)
     return parser
+
+def analyze(lang, word):
+    """Return either a morphological analysis of the word, or if we can't do
+    that, just the surface form again."""
+    analyses = l3.anal(lang, word, raw=True)
+    if analyses == []:
+        return word
+    lemmas = set(a[0] for a in analyses)
+    return "/".join(lemma for lemma in lemmas)
+
+def collect_shared_verses(sourcebible, targetbible, verseids,
+    tokenize=False, lowercase=False, lemmatize=False):
+    """Returns two lists of strings, the lemmatized one and the surface one. If
+    lemmatize is False, return None for that first output."""
+    thetokenizer = tokenizer.gn_tokenizer()
+    lemmatized_out = []
+    surface_out = []
+    for verseid in sorted(verseids):
+        left, right = sourcebible[verseid], targetbible[verseid]
+        if lowercase:
+            left, right = left.lower(), right.lower()
+
+        if tokenize:
+            gnwords = thetokenizer.tokenize(right)
+            right = " ".join(gnwords)
+            eswords = thetokenizer.tokenize(left)
+            left = " ".join(eswords)
+
+        verseline = "{0} ||| {1}".format(left, right)
+        surface_out.append(verseline)
+
+        if lemmatize:
+            gnwords = right.split()
+            gnlemmas = [analyze("gn", word) for word in gnwords]
+            right = " ".join(gnlemmas)
+            eswords = left.split()
+            eslemmas = [analyze("es", word) for word in eswords]
+            left = " ".join(eslemmas)
+        verseline = "{0} ||| {1}".format(left, right)
+        lemmatized_out.append(verseline)
+
+    if not lemmatize:
+        lemmatized_out = None
+    return lemmatized_out, surface_out
 
 def main():
     argparser = get_argparser()
@@ -68,44 +113,21 @@ def main():
     sourcebible = load_bible(sourcefn)
     targetbible = load_bible(targetfn)
 
-    thetokenizer = tokenizer.gn_tokenizer()
-
-    both = shared_verses(sourcebible, targetbible)
-    for verseid in sorted(both):
-        left, right = sourcebible[verseid], targetbible[verseid]
-        if args.lowercase:
-            left, right = left.lower(), right.lower()
-
-        if args.tokenize:
-            gnwords = thetokenizer.tokenize(right)
-            right = " ".join(gnwords)
-            eswords = thetokenizer.tokenize(left)
-            left = " ".join(eswords)
-
-        if args.lemmatize:
-            gnlemmas = []
-            gnwords = right.split()
-            for gnword in gnwords:
-                analyses = l3.anal('gn', gnword, raw=True)
-                if analyses == []:
-                    gnlemmas.append(gnword)
-                else:
-                    lemmas = "/".join(a[0] for a in analyses)
-                    gnlemmas.append(lemmas)
-            right = " ".join(gnlemmas)
-
-            eslemmas = []
-            eswords = left.split()
-            for esword in eswords:
-                analyses = l3.anal('es', esword, raw=True)
-                if analyses == []:
-                    eslemmas.append(esword)
-                else:
-                    lemmas = "/".join(a[0] for a in analyses)
-                    # print("GOT A SPANISH ANALYSIS. word: {0} lemma: {1}".format(esword, lemmas))
-                    eslemmas.append(lemmas)
-            left = " ".join(eslemmas)
-        print("{0} ||| {1}".format(left, right))
-        break
+    verseids = shared_verseids(sourcebible, targetbible)
+    lemmas, surface = collect_shared_verses(sourcebible, targetbible, verseids,
+                                            tokenize=args.tokenize,
+                                            lowercase=args.lowercase,
+                                            lemmatize=args.lemmatize)
+    if args.lemmatize:
+        with open(args.out, "w") as outfile:
+            for line in lemmas:
+                print(line, file=outfile)
+        with open(args.out + ".surface", "w") as outfile:
+            for line in surface:
+                print(line, file=outfile)
+    else:
+        with open(args.out, "w") as outfile:
+            for line in surface:
+                print(line, file=outfile)
 
 if __name__ == "__main__": main()
