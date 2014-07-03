@@ -114,6 +114,12 @@ def main():
     targetbible = load_bible(targetfn)
 
     verseids = shared_verseids(sourcebible, targetbible)
+    
+    ## warm up the morphological analyzers in the right order
+    if args.lemmatize:
+        l3.anal_word("es", "cargando", raw=True)
+        l3.anal_word("gn", "terere", raw=True)
+
     lemmas, surface = collect_shared_verses(sourcebible, targetbible, verseids,
                                             tokenize=args.tokenize,
                                             lowercase=args.lowercase,
