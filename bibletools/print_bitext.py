@@ -19,12 +19,18 @@ import sys
 import util
 import tokenizer
 
+
 ## MA for es and gn
-here = os.path.dirname(os.path.realpath(__file__))
-paramorfo = os.path.realpath(
-    os.path.join(here, "..", "dependencies", "ParaMorfo-1.1"))
-sys.path.append(paramorfo)
-import l3
+def initialize_Morfo():
+    here = os.path.dirname(os.path.realpath(__file__))
+    paramorfo = os.path.realpath(
+        os.path.join(here, "..", "dependencies", "ParaMorfo-1.1"))
+    sys.path.append(paramorfo)
+    antimorfo = os.path.realpath(
+        os.path.join(here, "..", "dependencies", "AntiMorfo-1.2"))
+    sys.path.append(antimorfo)
+    import l3
+    import antimorfo
 
 def load_bible(fn):
     out = {}
@@ -114,11 +120,12 @@ def main():
     targetbible = load_bible(targetfn)
 
     verseids = shared_verseids(sourcebible, targetbible)
-    
+
     ## warm up the morphological analyzers in the right order
     if args.lemmatize:
         l3.anal_word("es", "cargando", raw=True)
         l3.anal_word("gn", "terere", raw=True)
+        antimorfo.anal_word("qu", "qallariypin", raw=True)
 
     lemmas, surface = collect_shared_verses(sourcebible, targetbible, verseids,
                                             tokenize=args.tokenize,
