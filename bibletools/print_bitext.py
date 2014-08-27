@@ -20,17 +20,20 @@ import util
 import tokenizer
 
 
-## MA for es and gn
-def initialize_Morfo():
-    here = os.path.dirname(os.path.realpath(__file__))
-    paramorfo = os.path.realpath(
-        os.path.join(here, "..", "dependencies", "ParaMorfo-1.1"))
-    sys.path.append(paramorfo)
-    antimorfo = os.path.realpath(
-        os.path.join(here, "..", "dependencies", "AntiMorfo-1.2"))
-    sys.path.append(antimorfo)
-    import l3
-    import antimorfo
+## MA for es, gn, qu
+here = os.path.dirname(os.path.realpath(__file__))
+paramorfo = os.path.realpath(
+    os.path.join(here, "..", "dependencies", "ParaMorfo-1.1"))
+sys.path.append(paramorfo)
+antimorfo = os.path.realpath(
+    os.path.join(here, "..", "dependencies", "AntiMorfo-1.2"))
+sys.path.append(antimorfo)
+import l3
+import antimorfo
+
+## MA for en
+import nltk
+wnl = nltk.stem.WordNetLemmatizer()
 
 def load_bible(fn):
     out = {}
@@ -69,16 +72,32 @@ def get_argparser():
 def analyze(lang, word):
     """Return either a morphological analysis of the word, or if we can't do
     that, just the surface form again."""
-    analyses = l3.anal(lang, word, raw=True)
-    if analyses == []:
+
+    if "en" == lang:
+        return wnl.lemmatize(word)
+
+    analyses = []
+    if "qu" == lang:
+        analyses = antimorfo.anal_word("qu", word, raw=True)
+    else:
+        analyses = l3.anal(lang, word, raw=True)
+
+    ## remove Nones from the list? ...
+    analyses = [a for a in analyses if (a and a[0])]
+
+    if not analyses:
         return word
-    lemmas = set(a[0] for a in analyses)
-    return "/".join(lemma for lemma in lemmas)
+    ## XXX: really we want morphological disambiguation here; is the first
+    ## analysis the most likely? Probably they're unordered.
+    lemmas = [a[0] for a in analyses]
+    return "/".join(lemmas)
 
 def collect_shared_verses(sourcebible, targetbible, verseids,
-    tokenize=False, lowercase=False, lemmatize=False):
+    tokenize=False, lowercase=False, lemmatize=False,
+    sl=None, tl=None):
     """Returns two lists of strings, the lemmatized one and the surface one. If
     lemmatize is False, return None for that first output."""
+
     thetokenizer = tokenizer.gn_tokenizer()
     lemmatized_out = []
     surface_out = []
@@ -88,21 +107,22 @@ def collect_shared_verses(sourcebible, targetbible, verseids,
             left, right = left.lower(), right.lower()
 
         if tokenize:
-            gnwords = thetokenizer.tokenize(right)
-            right = " ".join(gnwords)
-            eswords = thetokenizer.tokenize(left)
-            left = " ".join(eswords)
+            sourcewords = thetokenizer.tokenize(left)
+            left = " ".join(sourcewords)
+            targetwords = thetokenizer.tokenize(right)
+            right = " ".join(targetwords)
 
         verseline = "{0} ||| {1}".format(left, right)
         surface_out.append(verseline)
 
         if lemmatize:
-            gnwords = right.split()
-            gnlemmas = [analyze("gn", word) for word in gnwords]
-            right = " ".join(gnlemmas)
-            eswords = left.split()
-            eslemmas = [analyze("es", word) for word in eswords]
-            left = " ".join(eslemmas)
+            sourcewords = left.split()
+            sourcelemmas = [analyze(sl, word) for word in sourcewords]
+            left = " ".join(sourcelemmas)
+
+            targetwords = right.split()
+            targetlemmas = [analyze(tl, word) for word in targetwords]
+            right = " ".join(targetlemmas)
         verseline = "{0} ||| {1}".format(left, right)
         lemmatized_out.append(verseline)
 
@@ -116,6 +136,11 @@ def main():
     sourcefn = args.source
     targetfn = args.target
 
+    sourcelanguage = sourcefn.split(".")[0]
+    targetlanguage = targetfn.split(".")[0]
+    print("SOURCE LANGUAGE:", sourcelanguage)
+    print("TARGET LANGUAGE:", targetlanguage)
+
     sourcebible = load_bible(sourcefn)
     targetbible = load_bible(targetfn)
 
@@ -123,14 +148,20 @@ def main():
 
     ## warm up the morphological analyzers in the right order
     if args.lemmatize:
-        l3.anal_word("es", "cargando", raw=True)
-        l3.anal_word("gn", "terere", raw=True)
-        antimorfo.anal_word("qu", "qallariypin", raw=True)
+        if "es" in [sourcelanguage,targetlanguage]:
+            l3.anal_word("es", "cargando", raw=True)
+        if "gn" in [sourcelanguage,targetlanguage]:
+            l3.anal_word("gn", "terere", raw=True)
+        if "qu" in [sourcelanguage,targetlanguage]:
+            antimorfo.anal_word("qu", "qallariypin", raw=True)
+        print("OK DONE LOADING MA")
 
     lemmas, surface = collect_shared_verses(sourcebible, targetbible, verseids,
                                             tokenize=args.tokenize,
                                             lowercase=args.lowercase,
-                                            lemmatize=args.lemmatize)
+                                            lemmatize=args.lemmatize,
+                                            sl=sourcelanguage,
+                                            tl=targetlanguage)
     if args.lemmatize:
         with open(args.out, "w") as outfile:
             for line in lemmas:
