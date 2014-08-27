@@ -1,8 +1,8 @@
 #!/bin/bash
 
 python3 print_bitext.py \
-  --source en.bible \
-  --target es.bible \
+  --source bible.en \
+  --target bible.es \
   --lowercase \
   --tokenize \
   --lemmatize  \
