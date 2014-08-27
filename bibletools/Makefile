@@ -14,14 +14,14 @@ bible.en-es: bible.en bible.es
 bible.es-en: bible.es bible.en
 	./bitext_es_en.sh
 
-es.bible:
+bible.es:
 	./extract_es.sh
 
-gn.bible:
+bible.gn:
 	./extract_gn.sh
 
-en.bible:
+bible.en:
 	./extract_en.sh
 
-qu.bible:
+bible.qu:
 	./extract_qu.sh
