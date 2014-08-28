@@ -6,7 +6,7 @@ bible.es-gn: bible.es bible.gn
 	./bitext_es_gn.sh
 
 bible.es-qu: bible.es bible.qu
-	./bitext_es_en.sh
+	./bitext_es_qu.sh
 
 bible.en-es: bible.en bible.es
 	./bitext_en_es.sh

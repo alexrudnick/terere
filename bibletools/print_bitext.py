@@ -31,6 +31,8 @@ sys.path.append(antimorfo)
 import l3
 import antimorfo
 
+LANGUAGES = "en es gn qu".split()
+
 ## MA for en
 import nltk
 wnl = nltk.stem.WordNetLemmatizer()
@@ -98,6 +100,9 @@ def collect_shared_verses(sourcebible, targetbible, verseids,
     """Returns two lists of strings, the lemmatized one and the surface one. If
     lemmatize is False, return None for that first output."""
 
+    assert sl in LANGUAGES, "need to specify source language"
+    assert tl in LANGUAGES, "need to specify target language"
+
     thetokenizer = tokenizer.gn_tokenizer()
     lemmatized_out = []
     surface_out = []
@@ -136,10 +141,8 @@ def main():
     sourcefn = args.source
     targetfn = args.target
 
-    sourcelanguage = sourcefn.split(".")[0]
-    targetlanguage = targetfn.split(".")[0]
-    print("SOURCE LANGUAGE:", sourcelanguage)
-    print("TARGET LANGUAGE:", targetlanguage)
+    sourcelanguage = sourcefn.split(".")[1]
+    targetlanguage = targetfn.split(".")[1]
 
     sourcebible = load_bible(sourcefn)
     targetbible = load_bible(targetfn)
