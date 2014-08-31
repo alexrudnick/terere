@@ -75,8 +75,7 @@ def analyze(lang, word):
     """Return either a morphological analysis of the word, or if we can't do
     that, just the surface form again."""
 
-    if "en" == lang:
-        return wnl.lemmatize(word)
+    assert lang != "en" ## need to run pos tagger on English sentences
 
     analyses = []
     if "qu" == lang:
@@ -91,8 +90,38 @@ def analyze(lang, word):
         return word
     ## XXX: really we want morphological disambiguation here; is the first
     ## analysis the most likely? Probably they're unordered.
-    lemmas = [a[0] for a in analyses]
+    lemmas = sorted(set(a[0] for a in analyses))
     return "/".join(lemmas)
+
+
+VERBS = "MD VB VBD VBG VBN VBP VBZ".split()
+NOUNS = "NN NNS NNP NNPS".split()
+ADJECTIVES = "JJ JJR JJS".split()
+
+def analyze_sentence(lang, words):
+    """Given a list of words (like a sentence or a bible verse), return the list
+    of the lemmatized forms of those words."""
+
+    if "en" == lang:
+        tagged = nltk.pos_tag(words)
+        lemmas = []
+        for (word, tag) in tagged:
+            if tag in VERBS:
+                wntag = "v"
+            elif tag in NOUNS:
+                wntag = "n"
+            elif tag in ADJECTIVES:
+                wntag = "a"
+            else:
+                wntag = None
+            if wntag:
+                lemmas.append(wnl.lemmatize(word, wntag))
+            else:
+                lemmas.append(wnl.lemmatize(word))
+        assert len(words) == len(lemmas)
+        return lemmas
+    ## not English, just run the MA
+    return [analyze(lang, w) for w in words]
 
 def collect_shared_verses(sourcebible, targetbible, verseids,
     tokenize=False, lowercase=False, lemmatize=False,
@@ -122,11 +151,11 @@ def collect_shared_verses(sourcebible, targetbible, verseids,
 
         if lemmatize:
             sourcewords = left.split()
-            sourcelemmas = [analyze(sl, word) for word in sourcewords]
+            sourcelemmas = analyze_sentence(sl, sourcewords)
             left = " ".join(sourcelemmas)
 
             targetwords = right.split()
-            targetlemmas = [analyze(tl, word) for word in targetwords]
+            targetlemmas = analyze_sentence(tl, targetwords)
             right = " ".join(targetlemmas)
         verseline = "{0} ||| {1}".format(left, right)
         lemmatized_out.append(verseline)
