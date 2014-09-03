@@ -106,18 +106,17 @@ def analyze_sentence(lang, words):
         tagged = nltk.pos_tag(words)
         lemmas = []
         for (word, tag) in tagged:
+            wntag = None
             if tag in VERBS:
                 wntag = "v"
             elif tag in NOUNS:
                 wntag = "n"
             elif tag in ADJECTIVES:
                 wntag = "a"
-            else:
-                wntag = None
             if wntag:
                 lemmas.append(wnl.lemmatize(word, wntag))
             else:
-                lemmas.append(wnl.lemmatize(word))
+                lemmas.append(word)
         assert len(words) == len(lemmas)
         return lemmas
     ## not English, just run the MA
