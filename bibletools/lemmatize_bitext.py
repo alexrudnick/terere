@@ -77,6 +77,7 @@ def analyze_sentence(lang, words):
 
 def main():
     infn = sys.argv[1]
+    outfn = sys.argv[2]
     sl, tl = infn.split(".")[1].split("-")
     assert sl in LANGUAGES, "need to specify source language in fn"
     assert tl in LANGUAGES, "need to specify target language in fn"
@@ -90,7 +91,7 @@ def main():
         antimorfo.anal_word("qu", "qallariypin", raw=True)
     print("OK DONE LOADING MA")
 
-    with open(infn) as infile:
+    with open(infn) as infile, open(outfn, "w") as outfile:
         for line in infile:
             left, right = line.split("|||")
 
@@ -103,6 +104,6 @@ def main():
             right = " ".join(targetlemmas)
 
             verseline = "{0} ||| {1}".format(left, right)
-            print(verseline)
+            print(verseline, file=outfile)
 
 if __name__ == "__main__": main()
