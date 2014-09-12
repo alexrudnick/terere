@@ -5,5 +5,4 @@ python3 print_bitext.py \
   --target bible.es \
   --lowercase \
   --tokenize \
-  --lemmatize  \
-  --out bible.en-es \
+  --out bible.en-es.unfiltered \

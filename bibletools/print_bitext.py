@@ -9,7 +9,7 @@ BOOK_chapter_verse{TAB}Text of verse goes here...
 ... for all the verses that are present in both, print those two verses joined
 by a |||, source on the left and target on the right, ready for alignment.
 
-Also optionally do lowercasing, tokenization and lemmatization.
+Also optionally do lowercasing and tokenization.
 """
 
 import argparse
@@ -19,23 +19,7 @@ import sys
 import util
 import tokenizer
 
-
-## MA for es, gn, qu
-here = os.path.dirname(os.path.realpath(__file__))
-paramorfo = os.path.realpath(
-    os.path.join(here, "..", "dependencies", "ParaMorfo-1.1"))
-sys.path.append(paramorfo)
-antimorfo = os.path.realpath(
-    os.path.join(here, "..", "dependencies", "AntiMorfo-1.2"))
-sys.path.append(antimorfo)
-import l3
-import antimorfo
-
 LANGUAGES = "en es gn qu".split()
-
-## MA for en
-import nltk
-wnl = nltk.stem.WordNetLemmatizer()
 
 def load_bible(fn):
     out = {}
@@ -67,65 +51,12 @@ def get_argparser():
     parser.add_argument('--lowercase', default=False, action='store_true')
     parser.add_argument('--tokenize', default=True, action='store_true')
     parser.add_argument('--notokenize', default=False, dest='tokenize', action='store_false')
-    parser.add_argument('--lemmatize', default=False, action='store_true')
     parser.add_argument('--out', type=str, required=True)
     return parser
 
-def analyze(lang, word):
-    """Return either a morphological analysis of the word, or if we can't do
-    that, just the surface form again."""
-
-    assert lang != "en" ## need to run pos tagger on English sentences
-
-    analyses = []
-    if "qu" == lang:
-        analyses = antimorfo.anal_word("qu", word, raw=True)
-    else:
-        analyses = l3.anal(lang, word, raw=True)
-
-    ## remove Nones from the list? ...
-    analyses = [a for a in analyses if (a and a[0])]
-
-    if not analyses:
-        return word
-    ## XXX: really we want morphological disambiguation here; is the first
-    ## analysis the most likely? Probably they're unordered.
-    lemmas = sorted(set(a[0] for a in analyses))
-    return "/".join(lemmas)
-
-
-VERBS = "MD VB VBD VBG VBN VBP VBZ".split()
-NOUNS = "NN NNS NNP NNPS".split()
-ADJECTIVES = "JJ JJR JJS".split()
-
-def analyze_sentence(lang, words):
-    """Given a list of words (like a sentence or a bible verse), return the list
-    of the lemmatized forms of those words."""
-
-    if "en" == lang:
-        tagged = nltk.pos_tag(words)
-        lemmas = []
-        for (word, tag) in tagged:
-            wntag = None
-            if tag in VERBS:
-                wntag = "v"
-            elif tag in NOUNS:
-                wntag = "n"
-            elif tag in ADJECTIVES:
-                wntag = "a"
-            if wntag:
-                lemmas.append(wnl.lemmatize(word, wntag))
-            else:
-                lemmas.append(word)
-        assert len(words) == len(lemmas)
-        return lemmas
-    ## not English, just run the MA
-    return [analyze(lang, w) for w in words]
-
 def collect_shared_verses(sourcebible, targetbible, verseids,
-    tokenize=False, lowercase=False, lemmatize=False,
-    sl=None, tl=None):
-    """Returns two lists of strings, the lemmatized one and the surface one. If
+    tokenize=False, lowercase=False, sl=None, tl=None):
+    """Returns one list of strings: just the surface one. If
     lemmatize is False, return None for that first output."""
 
     assert sl in LANGUAGES, "need to specify source language"
@@ -147,21 +78,7 @@ def collect_shared_verses(sourcebible, targetbible, verseids,
 
         verseline = "{0} ||| {1}".format(left, right)
         surface_out.append(verseline)
-
-        if lemmatize:
-            sourcewords = left.split()
-            sourcelemmas = analyze_sentence(sl, sourcewords)
-            left = " ".join(sourcelemmas)
-
-            targetwords = right.split()
-            targetlemmas = analyze_sentence(tl, targetwords)
-            right = " ".join(targetlemmas)
-        verseline = "{0} ||| {1}".format(left, right)
-        lemmatized_out.append(verseline)
-
-    if not lemmatize:
-        lemmatized_out = None
-    return lemmatized_out, surface_out
+    return surface_out
 
 def main():
     argparser = get_argparser()
@@ -178,31 +95,13 @@ def main():
     verseids = shared_verseids(sourcebible, targetbible)
 
     ## warm up the morphological analyzers in the right order
-    if args.lemmatize:
-        if "es" in [sourcelanguage,targetlanguage]:
-            l3.anal_word("es", "cargando", raw=True)
-        if "gn" in [sourcelanguage,targetlanguage]:
-            l3.anal_word("gn", "terere", raw=True)
-        if "qu" in [sourcelanguage,targetlanguage]:
-            antimorfo.anal_word("qu", "qallariypin", raw=True)
-        print("OK DONE LOADING MA")
-
-    lemmas, surface = collect_shared_verses(sourcebible, targetbible, verseids,
-                                            tokenize=args.tokenize,
-                                            lowercase=args.lowercase,
-                                            lemmatize=args.lemmatize,
-                                            sl=sourcelanguage,
-                                            tl=targetlanguage)
-    if args.lemmatize:
-        with open(args.out, "w") as outfile:
-            for line in lemmas:
-                print(line, file=outfile)
-        with open(args.out + ".surface", "w") as outfile:
-            for line in surface:
-                print(line, file=outfile)
-    else:
-        with open(args.out, "w") as outfile:
-            for line in surface:
-                print(line, file=outfile)
+    surface = collect_shared_verses(sourcebible, targetbible, verseids,
+                                    tokenize=args.tokenize,
+                                    lowercase=args.lowercase,
+                                    sl=sourcelanguage,
+                                    tl=targetlanguage)
+    with open(args.out, "w") as outfile:
+        for line in surface:
+            print(line, file=outfile)
 
 if __name__ == "__main__": main()
