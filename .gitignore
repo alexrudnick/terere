@@ -36,3 +36,5 @@ nosetests.xml
 
 ## generated models
 build-gn-lm/corpus.model
+
+bibletools/bible.*
