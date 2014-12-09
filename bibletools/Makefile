@@ -1,6 +1,7 @@
 ## makefile to build all the bibles and run alignment on them
 
-all: bible.es-en bible.es-gn bible.es-qu 
+all: bible.es-en
+#bible.es-gn bible.es-qu 
 ## bible.en-es
 
 ## run alignment
@@ -22,10 +23,19 @@ bible.es-qu: bible.es bible.qu
 ## freeling on it. Let's think about the English case later.
 bible.es-en: bible.es bible.en
 	./bitext_es_en.sh
-	~/cdec/corpus/filter-length.pl -80 bible.es-en.unfiltered > bible.es-en.surface
+	~/cdec/corpus/filter-length.pl -80 output/bible.es-en.unfiltered > output/bible.es-en.surface
 	## having done the length filtering, we can take the source side of the
 	## surface bitext and produce the annotated version.
-	~/cdec/corpus/cut-corpus.pl 1 < bible.es-en.surface | analyze -f freeling-config/es.cfg > bible.es-en-source.annotated
+	~/cdec/corpus/cut-corpus.pl 1 \
+		< output/bible.es-en.surface \
+		| python3 freeling_splitted.py \
+		> output/bible.es-en.surface.source.splitted
+	analyze -f freeling-config/es.cfg < output/bible.es-en.surface.source.splitted > output/bible.es-en.source.tagged
+	~/cdec/corpus/cut-corpus.pl 2 \
+		< output/bible.es-en.surface \
+		| python3 freeling_splitted.py \
+		> output/bible.es-en.surface.target.splitted
+	analyze -f freeling-config/es.cfg < output/bible.es-en.surface.target.splitted > output/bible.es-en-target.tagged
 	##python3 lemmatize_bitext.py bible.es-en.surface bible.es-en
 	##~/cdec/word-aligner/fast_align -i ./bible.es-en -d -v -o > bible.es-en.align
 
