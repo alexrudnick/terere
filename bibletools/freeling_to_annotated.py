@@ -25,7 +25,9 @@ def main():
          open(args.annotated, "w") as annotatedout:
 
         lemmas = []
+        lineno = 0
         for line in infile:
+            lineno += 1
             line = line.strip()
             if lemmas and not line:
                 print(" ".join(lemmas), file=lemmaout)
@@ -34,9 +36,12 @@ def main():
                 continue
             # sirvan servir VMSP3P0 0.885892
             try:
-                surface, lemma, tag, confidence = line.split()
+                ## There can actually be more than the first four fields.
+                ## But we just take the first four.
+                surface, lemma, tag, confidence = line.split()[:4]
+                lemmas.append(lemma)
             except:
-                print("surprising line:", line)
+                print("surprising line:", line, lineno)
                 break
             print("{0}\t{1}\ttag={2}".format(lemma, surface, tag),
                   file=annotatedout)

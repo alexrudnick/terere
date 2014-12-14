@@ -49,13 +49,14 @@ def get_argparser():
     parser.add_argument('--source', type=str, required=True)
     parser.add_argument('--target', type=str, required=True)
     parser.add_argument('--lowercase', default=False, action='store_true')
-    parser.add_argument('--tokenize', default=True, action='store_true')
-    parser.add_argument('--notokenize', default=False, dest='tokenize', action='store_false')
+    parser.add_argument('--source_tokenize', default=False, action='store_true')
+    parser.add_argument('--target_tokenize', default=False, action='store_true')
     parser.add_argument('--out', type=str, required=True)
     return parser
 
 def collect_shared_verses(sourcebible, targetbible, verseids,
-    tokenize=False, lowercase=False, sl=None, tl=None):
+    source_tokenize=False, target_tokenize=False,
+    lowercase=False, sl=None, tl=None):
     """Returns one list of strings: just the surface one. If
     lemmatize is False, return None for that first output."""
 
@@ -70,9 +71,10 @@ def collect_shared_verses(sourcebible, targetbible, verseids,
         if lowercase:
             left, right = left.lower(), right.lower()
 
-        if tokenize:
+        if source_tokenize:
             sourcewords = thetokenizer.tokenize(left)
             left = " ".join(sourcewords)
+        if target_tokenize:
             targetwords = thetokenizer.tokenize(right)
             right = " ".join(targetwords)
 
@@ -96,7 +98,8 @@ def main():
 
     ## warm up the morphological analyzers in the right order
     surface = collect_shared_verses(sourcebible, targetbible, verseids,
-                                    tokenize=args.tokenize,
+                                    source_tokenize=args.source_tokenize,
+                                    target_tokenize=args.target_tokenize,
                                     lowercase=args.lowercase,
                                     sl=sourcelanguage,
                                     tl=targetlanguage)

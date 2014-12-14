@@ -28,16 +28,25 @@ bible.es-en: bible.es bible.en
 	## surface bitext and produce the annotated version.
 	~/cdec/corpus/cut-corpus.pl 1 \
 		< output/bible.es-en.surface \
-		| python3 freeling_splitted.py \
-		> output/bible.es-en.surface.source.splitted
-	analyze -f freeling-config/es.cfg < output/bible.es-en.surface.source.splitted > output/bible.es-en.source.tagged
+		> output/bible.es-en.surface.source
+	analyze -f freeling-config/es.cfg < output/bible.es-en.surface.source > output/bible.es-en.source.tagged
 	~/cdec/corpus/cut-corpus.pl 2 \
 		< output/bible.es-en.surface \
-		| python3 freeling_splitted.py \
-		> output/bible.es-en.surface.target.splitted
-	analyze -f freeling-config/es.cfg < output/bible.es-en.surface.target.splitted > output/bible.es-en-target.tagged
-	##python3 lemmatize_bitext.py bible.es-en.surface bible.es-en
-	##~/cdec/word-aligner/fast_align -i ./bible.es-en -d -v -o > bible.es-en.align
+		> output/bible.es-en.surface.target
+	analyze -f freeling-config/en.cfg < output/bible.es-en.surface.target > output/bible.es-en.target.tagged
+	python3 freeling_to_annotated.py \
+	    --freeling output/bible.es-en.source.tagged \
+	    --lemma_out output/bible.es-en.source.lemmas \
+	    --annotated output/bible.es-en.source.annotated
+	python3 freeling_to_annotated.py \
+	    --freeling output/bible.es-en.target.tagged \
+	    --lemma_out output/bible.es-en.target.lemmas \
+	    --annotated output/bible.es-en.target.annotated
+	~/cdec/corpus/paste-files.pl \
+	    output/bible.es-en.target.lemmas \
+	    output/bible.es-en.source.lemmas \
+	    > output/bible.es-en
+	~/cdec/word-aligner/fast_align -i ./output/bible.es-en -d -v -o > output/bible.es-en.align
 
 bible.en-es: bible.en bible.es
 	./bitext_en_es.sh
