@@ -1,8 +1,6 @@
 #!/bin/bash
 
 python3 print_bitext.py \
-  --source bible.es \
-  --target bible.gn \
-  --lowercase \
-  --tokenize \
-  --out bible.es-gn.unfiltered \
+  --source output/bible.es \
+  --target output/bible.gn \
+  --out output/bible.es-gn.unfiltered \

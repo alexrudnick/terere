@@ -1,17 +1,12 @@
 ## makefile to build all the bibles and run alignment on them
 
-all: bible.es-en
-#bible.es-gn bible.es-qu 
+all: bible.es-en bible.es-gn
+## bible.es-qu 
 ## bible.en-es
 
 ## run alignment
 
 ## bitext extraction
-bible.es-gn: bible.es bible.gn
-	./bitext_es_gn.sh
-	~/cdec/corpus/filter-length.pl -80 bible.es-gn.unfiltered > bible.es-gn.surface
-	python3 lemmatize_bitext.py bible.es-gn.surface bible.es-gn
-	~/cdec/word-aligner/fast_align -i ./bible.es-gn -d -v -o > bible.es-gn.align
 
 bible.es-qu: bible.es bible.qu
 	./bitext_es_qu.sh
@@ -43,10 +38,36 @@ bible.es-en: bible.es bible.en
 	    --lemma_out output/bible.es-en.target.lemmas \
 	    --annotated output/bible.es-en.target.annotated
 	~/cdec/corpus/paste-files.pl \
-	    output/bible.es-en.target.lemmas \
 	    output/bible.es-en.source.lemmas \
+	    output/bible.es-en.target.lemmas \
 	    > output/bible.es-en
 	~/cdec/word-aligner/fast_align -i ./output/bible.es-en -d -v -o > output/bible.es-en.align
+
+
+## now let's do es-gn similar to how we're doing es-en.
+bible.es-gn: bible.es bible.gn
+	./bitext_es_gn.sh
+	~/cdec/corpus/filter-length.pl -80 output/bible.es-gn.unfiltered > output/bible.es-gn.surface
+	## having done the length filtering, we can take the source side of the
+	## surface bitext and produce the annotated version.
+	~/cdec/corpus/cut-corpus.pl 1 \
+		< output/bible.es-gn.surface \
+		> output/bible.es-gn.surface.source
+	analyze -f freeling-config/es.cfg < output/bible.es-gn.surface.source > output/bible.es-gn.source.tagged
+	python3 freeling_to_annotated.py \
+	    --freeling output/bible.es-gn.source.tagged \
+	    --lemma_out output/bible.es-gn.source.lemmas \
+	    --annotated output/bible.es-gn.source.annotated
+	~/cdec/corpus/cut-corpus.pl 2 \
+		< output/bible.es-gn.surface \
+		> output/bible.es-gn.surface.target
+	## now get the gn lemmas
+	python3 lemmatize_text.py gn output/bible.es-gn.surface.target output/bible.es-gn.target.lemmas
+	~/cdec/corpus/paste-files.pl \
+	    output/bible.es-gn.source.lemmas \
+	    output/bible.es-gn.target.lemmas \
+	    > output/bible.es-gn
+	~/cdec/word-aligner/fast_align -i ./output/bible.es-gn -d -v -o > output/bible.es-gn.align
 
 bible.en-es: bible.en bible.es
 	./bitext_en_es.sh
