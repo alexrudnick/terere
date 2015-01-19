@@ -33,7 +33,7 @@ def analyze(lang, word):
     assert lang in ["qu", "gn"] ## need to run pos tagger on English sentences
 
     ## XXX: speed hack: don't lemmatize ever.
-    return ("lemma:" + word, "thisisthetag")
+    ## return ("lemma:" + word, "thisisthetag")
 
     analyses = []
     if "qu" == lang:

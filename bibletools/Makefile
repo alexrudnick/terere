@@ -1,21 +1,8 @@
 ## makefile to build all the bibles and run alignment on them
 
-all: bible.es-en bible.es-gn
-## bible.es-qu 
-## bible.en-es
+all: bible.es-en bible.es-gn bible.es-qu bible.en-es
 
-## run alignment
-
-## bitext extraction
-
-bible.es-qu: bible.es bible.qu
-	./bitext_es_qu.sh
-	~/cdec/corpus/filter-length.pl -80 bible.es-qu.unfiltered > bible.es-qu.surface
-	python3 lemmatize_bitext.py bible.es-qu.surface bible.es-qu
-	~/cdec/word-aligner/fast_align -i ./bible.es-qu -d -v -o > bible.es-qu.align
-
-## OK, so in any case where the source language is Spanish, we want to run
-## freeling on it. Let's think about the English case later.
+## Spanish-English
 bible.es-en: bible.es bible.en
 	./bitext_es_en.sh
 	~/cdec/corpus/filter-length.pl -80 output/bible.es-en.unfiltered > output/bible.es-en.surface
@@ -43,8 +30,36 @@ bible.es-en: bible.es bible.en
 	    > output/bible.es-en
 	~/cdec/word-aligner/fast_align -i ./output/bible.es-en -d -v -o > output/bible.es-en.align
 
+## English-Spanish (very similar to es-en)
+bible.en-es: bible.en bible.es
+	## old stuff
+	./bitext_en_es.sh
+	~/cdec/corpus/filter-length.pl -80 output/bible.en-es.unfiltered > output/bible.en-es.surface
+	## having done the length filtering, we can take the source side of the
+	## surface bitext and produce the annotated version.
+	~/cdec/corpus/cut-corpus.pl 1 \
+		< output/bible.en-es.surface \
+		> output/bible.en-es.surface.source
+	analyze -f freeling-config/en.cfg < output/bible.en-es.surface.source > output/bible.en-es.source.tagged
+	~/cdec/corpus/cut-corpus.pl 2 \
+		< output/bible.en-es.surface \
+		> output/bible.en-es.surface.target
+	analyze -f freeling-config/es.cfg < output/bible.en-es.surface.target > output/bible.en-es.target.tagged
+	python3 freeling_to_annotated.py \
+	    --freeling output/bible.en-es.source.tagged \
+	    --lemma_out output/bible.en-es.source.lemmas \
+	    --annotated output/bible.en-es.source.annotated
+	python3 freeling_to_annotated.py \
+	    --freeling output/bible.en-es.target.tagged \
+	    --lemma_out output/bible.en-es.target.lemmas \
+	    --annotated output/bible.en-es.target.annotated
+	~/cdec/corpus/paste-files.pl \
+	    output/bible.en-es.source.lemmas \
+	    output/bible.en-es.target.lemmas \
+	    > output/bible.en-es
+	~/cdec/word-aligner/fast_align -i ./output/bible.en-es -d -v -o > output/bible.en-es.align
 
-## now let's do es-gn similar to how we're doing es-en.
+## Spanish-Guarani
 bible.es-gn: bible.es bible.gn
 	./bitext_es_gn.sh
 	~/cdec/corpus/filter-length.pl -80 output/bible.es-gn.unfiltered > output/bible.es-gn.surface
@@ -69,11 +84,30 @@ bible.es-gn: bible.es bible.gn
 	    > output/bible.es-gn
 	~/cdec/word-aligner/fast_align -i ./output/bible.es-gn -d -v -o > output/bible.es-gn.align
 
-bible.en-es: bible.en bible.es
-	./bitext_en_es.sh
-	~/cdec/corpus/filter-length.pl -80 bible.en-es.unfiltered > bible.en-es.surface
-	python3 lemmatize_bitext.py bible.en-es.surface bible.en-es
-	~/cdec/word-aligner/fast_align -i ./bible.en-es -d -v -o > bible.en-es.align
+## Spanish-Quechua
+bible.es-qu: bible.es bible.qu
+	./bitext_es_qu.sh
+	~/cdec/corpus/filter-length.pl -80 output/bible.es-qu.unfiltered > output/bible.es-qu.surface
+	## having done the length filtering, we can take the source side of the
+	## surface bitext and produce the annotated version.
+	~/cdec/corpus/cut-corpus.pl 1 \
+		< output/bible.es-qu.surface \
+		> output/bible.es-qu.surface.source
+	analyze -f freeling-config/es.cfg < output/bible.es-qu.surface.source > output/bible.es-qu.source.tagged
+	python3 freeling_to_annotated.py \
+	    --freeling output/bible.es-qu.source.tagged \
+	    --lemma_out output/bible.es-qu.source.lemmas \
+	    --annotated output/bible.es-qu.source.annotated
+	~/cdec/corpus/cut-corpus.pl 2 \
+		< output/bible.es-qu.surface \
+		> output/bible.es-qu.surface.target
+	## now get the qu lemmas
+	python3 lemmatize_text.py qu output/bible.es-qu.surface.target output/bible.es-qu.target.lemmas
+	~/cdec/corpus/paste-files.pl \
+	    output/bible.es-qu.source.lemmas \
+	    output/bible.es-qu.target.lemmas \
+	    > output/bible.es-qu
+	~/cdec/word-aliquer/fast_align -i ./output/bible.es-qu -d -v -o > output/bible.es-qu.align
 
 ## extract bibles from their original formats
 bible.es:
