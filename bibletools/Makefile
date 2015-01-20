@@ -32,7 +32,6 @@ bible.es-en: bible.es bible.en
 
 ## English-Spanish (very similar to es-en)
 bible.en-es: bible.en bible.es
-	## old stuff
 	./bitext_en_es.sh
 	~/cdec/corpus/filter-length.pl -80 output/bible.en-es.unfiltered > output/bible.en-es.surface
 	## having done the length filtering, we can take the source side of the

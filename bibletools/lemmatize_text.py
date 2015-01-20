@@ -2,7 +2,8 @@
 
 """Lemmatize you some pre-tokenized text, with one sentence per line!
 
-The text must be in Quechua or Guarani or English.
+The text must be in Quechua or Guarani. English and Spanish should get run
+through FreeLing instead.
 """
 
 import os
