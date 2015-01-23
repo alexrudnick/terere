@@ -106,7 +106,7 @@ bible.es-qu: bible.es bible.qu
 	    output/bible.es-qu.source.lemmas \
 	    output/bible.es-qu.target.lemmas \
 	    > output/bible.es-qu
-	~/cdec/word-aliquer/fast_align -i ./output/bible.es-qu -d -v -o > output/bible.es-qu.align
+	~/cdec/word-aligner/fast_align -i ./output/bible.es-qu -d -v -o > output/bible.es-qu.align
 
 ## extract bibles from their original formats
 bible.es:

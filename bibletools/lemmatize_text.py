@@ -38,8 +38,6 @@ def analyze(lang, word):
     ## XXX: really we want morphological disambiguation here; is the first
     ## analysis the most likely? Probably they're unordered.
     lemmas = sorted(set(a[0] for a in analyses))
-    postags = sorted(set(a[1]['pos'] for a in analyses))
-    ## print(postags)
     return "/".join(lemmas)
 
 def analyze_sentence(lang, words):
@@ -47,7 +45,12 @@ def analyze_sentence(lang, words):
     of the lemmatized forms of those words."""
 
     ## not English, just run the MA
-    lemmas = [analyze(lang, w) for w in words]
+    lemmas = []
+    for w in words:
+        try:
+            lemmas.append(analyze(lang, w))
+        except:
+            assert False, "failed to analyze: {0}".format(w)
     return lemmas
 
 def main():
