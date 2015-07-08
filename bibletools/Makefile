@@ -75,8 +75,13 @@ bible.es-gn: bible.es bible.gn
 	~/cdec/corpus/cut-corpus.pl 2 \
 		< output/bible.es-gn.surface \
 		> output/bible.es-gn.surface.target
+	### run gn side through cdec's lowercasing and tokenization.
+	cat output/bible.es-gn.surface.target \
+		| ~/cdec/corpus/lowercase.pl \
+		| ~/cdec/corpus/tokenize-anything.sh \
+		> output/bible.es-gn.surface.target.tokenized
 	## now get the gn lemmas
-	python3 lemmatize_text.py gn output/bible.es-gn.surface.target output/bible.es-gn.target.lemmas
+	python3 lemmatize_text.py gn output/bible.es-gn.surface.target.tokenized output/bible.es-gn.target.lemmas
 	~/cdec/corpus/paste-files.pl \
 	    output/bible.es-gn.source.lemmas \
 	    output/bible.es-gn.target.lemmas \
@@ -100,8 +105,13 @@ bible.es-qu: bible.es bible.qu
 	~/cdec/corpus/cut-corpus.pl 2 \
 		< output/bible.es-qu.surface \
 		> output/bible.es-qu.surface.target
+	### run qu side through cdec's lowercasing and tokenization.
+	cat output/bible.es-qu.surface.target \
+		| ~/cdec/corpus/lowercase.pl \
+		| ~/cdec/corpus/tokenize-anything.sh \
+		> output/bible.es-qu.surface.target.tokenized
 	## now get the qu lemmas
-	python3 lemmatize_text.py qu output/bible.es-qu.surface.target output/bible.es-qu.target.lemmas
+	python3 lemmatize_text.py qu output/bible.es-qu.surface.target.tokenized output/bible.es-qu.target.lemmas
 	~/cdec/corpus/paste-files.pl \
 	    output/bible.es-qu.source.lemmas \
 	    output/bible.es-qu.target.lemmas \
