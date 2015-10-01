@@ -51,7 +51,7 @@ def get_argparser():
     parser.add_argument('--lowercase', default=False, action='store_true')
     parser.add_argument('--source_tokenize', default=False, action='store_true')
     parser.add_argument('--target_tokenize', default=False, action='store_true')
-    parser.add_argument('--out', type=str, required=True)
+    parser.add_argument('--out', type=str, required=False)
     return parser
 
 def collect_shared_verses(sourcebible, targetbible, verseids,
@@ -96,15 +96,21 @@ def main():
 
     verseids = shared_verseids(sourcebible, targetbible)
 
-    ## warm up the morphological analyzers in the right order
     surface = collect_shared_verses(sourcebible, targetbible, verseids,
                                     source_tokenize=args.source_tokenize,
                                     target_tokenize=args.target_tokenize,
                                     lowercase=args.lowercase,
                                     sl=sourcelanguage,
                                     tl=targetlanguage)
-    with open(args.out, "w") as outfile:
+
+    try:
+        outfile = sys.stdout
+        if args.out:
+            outfile = open(args.out, "w")
         for line in surface:
             print(line, file=outfile)
+    finally:
+        if args.out:
+            outfile.close()
 
 if __name__ == "__main__": main()
