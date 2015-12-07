@@ -130,3 +130,32 @@ bible.en:
 
 bible.qu:
 	./extract_qu.sh
+
+### NOW WITH EUROPARL.
+# English-Spanish
+europarl.en-es:
+	~/cdec/corpus/paste-files.pl /space/europarl-parallel/europarl-v7.es-en.en /space/europarl-parallel/europarl-v7.es-en.es > output/europarl.en-es.unfiltered
+	~/cdec/corpus/filter-length.pl -80 output/europarl.en-es.unfiltered > output/europarl.en-es.surface
+	## having done the length filtering, we can take the source side of the
+	## surface bitext and produce the annotated version.
+	~/cdec/corpus/cut-corpus.pl 1 \
+		< output/europarl.en-es.surface \
+		> output/europarl.en-es.surface.source
+	analyze -f freeling-config/en.cfg < output/europarl.en-es.surface.source > output/europarl.en-es.source.tagged
+	~/cdec/corpus/cut-corpus.pl 2 \
+		< output/europarl.en-es.surface \
+		> output/europarl.en-es.surface.target
+	analyze -f freeling-config/es.cfg < output/europarl.en-es.surface.target > output/europarl.en-es.target.tagged
+	python3 freeling_to_annotated.py \
+	    --freeling output/europarl.en-es.source.tagged \
+	    --lemma_out output/europarl.en-es.source.lemmas \
+	    --annotated output/europarl.en-es.source.annotated
+	python3 freeling_to_annotated.py \
+	    --freeling output/europarl.en-es.target.tagged \
+	    --lemma_out output/europarl.en-es.target.lemmas \
+	    --annotated output/europarl.en-es.target.annotated
+	~/cdec/corpus/paste-files.pl \
+	    output/europarl.en-es.source.lemmas \
+	    output/europarl.en-es.target.lemmas \
+	    > output/europarl.en-es
+	~/cdec/word-aligner/fast_align -i ./output/europarl.en-es -d -v -o > output/europarl.en-es.align
