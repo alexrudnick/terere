@@ -18,5 +18,5 @@ cat ~/terere/bibletools/output/bible.es-gn \
   --corpus ./corpus/bible \
   --f es \
   --e gn \
-  --alignment grow-diag-final-and \
+  --alignment srctotgt \
   --lm 0:3:/space/terere/moses-es-gn/nc.klm
