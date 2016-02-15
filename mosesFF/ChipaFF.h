@@ -11,10 +11,6 @@ class ChipaFF : public StatelessFeatureFunction {
 
   bool IsUseable(const FactorMask &mask) const { return true; }
 
-  void EvaluateInIsolation(const Phrase &source,
-                           const TargetPhrase &targetPhrase,
-                           ScoreComponentCollection &scoreBreakdown,
-                           ScoreComponentCollection &estimatedScores) const;
   void EvaluateWithSourceContext(
       const InputType &input, const InputPath &inputPath,
       const TargetPhrase &targetPhrase, const StackVec *stackVec,
@@ -29,7 +25,5 @@ class ChipaFF : public StatelessFeatureFunction {
                            ScoreComponentCollection *accumulator) const;
   void EvaluateWhenApplied(const ChartHypothesis &hypo,
                            ScoreComponentCollection *accumulator) const;
-
-  void SetParameter(const std::string &key, const std::string &value);
 };
 }

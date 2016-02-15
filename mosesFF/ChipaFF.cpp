@@ -13,33 +13,6 @@ ChipaFF::ChipaFF(const std::string &line) : StatelessFeatureFunction(2, line) {
   ReadParameters();
 }
 
-void ChipaFF::EvaluateInIsolation(
-    const Phrase &source, const TargetPhrase &targetPhrase,
-    ScoreComponentCollection &scoreBreakdown,
-    ScoreComponentCollection &estimatedScores) const {
-  // dense scores
-  vector<float> newScores(m_numScoreComponents);
-  newScores[0] = 1.5;
-  newScores[1] = 0.3;
-  scoreBreakdown.PlusEquals(this, newScores);
-
-  // sparse scores
-  scoreBreakdown.PlusEquals(this, "sparse-name", 2.4);
-}
-
-void ChipaFF::EvaluateWithSourceContext(
-    const InputType &input, const InputPath &inputPath,
-    const TargetPhrase &targetPhrase, const StackVec *stackVec,
-    ScoreComponentCollection &scoreBreakdown,
-    ScoreComponentCollection *estimatedScores) const {
-  if (targetPhrase.GetNumNonTerminals()) {
-    vector<float> newScores(m_numScoreComponents);
-    newScores[0] = -std::numeric_limits<float>::infinity();
-    scoreBreakdown.PlusEquals(this, newScores);
-  }
-}
-
-
 #define NAME       "XML-RPC for ChipaFF"
 #define VERSION    "0.1"
 #define SERVER_URL "http://localhost:8000/RPC2"
@@ -56,10 +29,11 @@ void die_if_fault_occurred (xmlrpc_env *env)
 
 // TODO(alexr): going to need to understand how to use this input object and
 // what we want to feed back into Moses.
-void makeRpcCall(const InputType &input) {
+float makeRpcCall(const InputType &input) {
     xmlrpc_env env;
     xmlrpc_value *result;
     xmlrpc_int32 sum, difference;
+
     
     /* Start up our XML-RPC client library. */
     xmlrpc_client_init(XMLRPC_CLIENT_NO_FLAGS, NAME, VERSION);
@@ -87,6 +61,26 @@ void makeRpcCall(const InputType &input) {
     /* Shutdown our XML-RPC client library. */
     xmlrpc_env_clean(&env);
     xmlrpc_client_cleanup();
+
+    float output_sum = (float) sum;
+    return output_sum;
+}
+
+void ChipaFF::EvaluateWithSourceContext(
+    const InputType &input, const InputPath &inputPath,
+    const TargetPhrase &targetPhrase, const StackVec *stackVec,
+    ScoreComponentCollection &scoreBreakdown,
+    ScoreComponentCollection *estimatedScores) const {
+
+  // XXX need to find out what the current focus word is and how to get the
+  // whole source sentence.
+
+  if (targetPhrase.GetNumNonTerminals()) {
+    vector<float> newScores(m_numScoreComponents);
+
+    newScores[0] = makeRpcCall(input);
+    scoreBreakdown.PlusEquals(this, newScores);
+  }
 }
 
 void ChipaFF::EvaluateTranslationOptionListWithSourceContext(
@@ -99,13 +93,5 @@ void ChipaFF::EvaluateWhenApplied(const Hypothesis &hypo,
 
 void ChipaFF::EvaluateWhenApplied(const ChartHypothesis &hypo,
                                   ScoreComponentCollection *accumulator) const {
-}
-
-void ChipaFF::SetParameter(const std::string &key, const std::string &value) {
-  if (key == "arg") {
-    // set value here
-  } else {
-    StatelessFeatureFunction::SetParameter(key, value);
-  }
 }
 }
