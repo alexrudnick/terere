@@ -7,10 +7,17 @@ Like so:
   $ ln -s ~/terere/mosesFF/ChipaFF.h .
   $ ln -s ~/terere/mosesFF/ChipaFF.cpp .
 
+Also edit your ~/mosesdecoder/moses/FF/Factory.cpp to include the lines:
+  #include "moses/FF/ChipaFF.h"
+  ...
+
+  MOSES_FNAME(ChipaFF);
+
 ... then rebuild Moses.
 
   $ cd ~/mosesdecoder
   $ ./compile.sh
+
 
 Also, you'll need libxmlrpc for C++. Install it on Ubuntu like this:
 

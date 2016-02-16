@@ -21,6 +21,11 @@ class ChipaFF : public StatelessFeatureFunction {
       const InputType &input,
       const TranslationOptionList &translationOptionList) const;
 
+  void EvaluateInIsolation(const Phrase &source,
+                           const TargetPhrase &targetPhrase,
+                           ScoreComponentCollection &scoreBreakdown,
+                           ScoreComponentCollection &estimatedScores) const;
+
   void EvaluateWhenApplied(const Hypothesis &hypo,
                            ScoreComponentCollection *accumulator) const;
   void EvaluateWhenApplied(const ChartHypothesis &hypo,
