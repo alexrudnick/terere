@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Script to install the latest stable version of xmlrpc-c into your Moses
-# installation.
+# Script to install the latest stable version of xmlrpc-c and libcurl into your
+# Moses installation.
 
 WORKDIR=$HOME/mosesdecoder/build
 MOSESOPT=$HOME/mosesdecoder/opt
@@ -14,5 +14,14 @@ svn checkout $REPOS xmlrpc-c
 
 cd xmlrpc-c
 ./configure --prefix="$MOSESOPT" --enable-cplusplus
+make
+make install
+
+
+cd $WORKDIR
+wget https://curl.haxx.se/download/curl-7.47.1.tar.gz
+tar xf curl-7.47.1.tar.gz
+cd curl-7.47.1
+./configure --prefix="$MOSESOPT"
 make
 make install
