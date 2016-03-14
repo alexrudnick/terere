@@ -1,0 +1,16 @@
+Demo for RPC mechanism that we're going to use to connect Chipa to a Moses
+feature function.
+
+It works via named pipes. The client (written in C++) needs an answer from the
+server (written in Python). There are two FIFOs (aka "named pipes") in /tmp ,
+called client_to_server and server_to_client.
+
+- The server is currently blocked, reading from server_to_client.
+- The client needs an answer, so it writes its query into server_to_client
+- Then the client blocks until there is input in server_to_client
+- Server gets the input, unblocks, and writes its answer to server_to_server
+- Server then blocks again until there's another request.
+- Client unblocks on getting its answer from server_to_client, continues.
+
+This is pretty general. We assume that we will read and write answers on a
+single line of text.
