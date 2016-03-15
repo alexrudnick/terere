@@ -1,7 +1,8 @@
-#include <vector>
-#include <iostream>
+#include <cstdlib>
 #include <fstream>
+#include <iostream>
 #include <string>
+#include <vector>
 
 #include "ChipaFF.h"
 #include "moses/ScoreComponentCollection.h"
@@ -23,7 +24,7 @@ const string CLIENT_TO_SERVER_PATH = "/tmp/client_to_server.fifo";
 double makeRpcCall(const InputType &input) {
   std::ofstream c2s;
   c2s.open(CLIENT_TO_SERVER_PATH.c_str());
-  c2s << s;
+  c2s << "foo";
   c2s.close();
 
   // Read response from server's output fifo.
@@ -32,7 +33,8 @@ double makeRpcCall(const InputType &input) {
   std::getline(s2c, response);
   s2c.close();
 
-  double out = std::stod(response);
+  std::string::size_type sz;
+  double out = atof(response.c_str()); //std::stod(response, &sz);
 
   return out;
 }
