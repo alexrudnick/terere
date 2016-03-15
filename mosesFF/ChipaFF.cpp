@@ -1,8 +1,7 @@
 #include <vector>
-
-#include <xmlrpc-c/girerr.hpp>
-#include <xmlrpc-c/base.hpp>
-#include <xmlrpc-c/client_simple.hpp>
+#include <iostream>
+#include <fstream>
+#include <string>
 
 #include "ChipaFF.h"
 #include "moses/ScoreComponentCollection.h"
@@ -15,35 +14,27 @@ ChipaFF::ChipaFF(const std::string &line) : StatelessFeatureFunction(2, line) {
   ReadParameters();
 }
 
-#define NAME "XML-RPC for ChipaFF"
-#define VERSION "0.1"
-#define SERVER_URL "http://localhost:8000/"
+
+const string SERVER_TO_CLIENT_PATH = "/tmp/server_to_client.fifo";
+const string CLIENT_TO_SERVER_PATH = "/tmp/client_to_server.fifo";
 
 // TODO(alexr): going to need to understand how to use this input object and
 // what we want to feed back into Moses.
 double makeRpcCall(const InputType &input) {
+  std::ofstream c2s;
+  c2s.open(CLIENT_TO_SERVER_PATH.c_str());
+  c2s << s;
+  c2s.close();
 
-    double sum;
-    try {
-        string const serverUrl("http://localhost:8080/RPC2");
-        string const methodName("sample.add");
+  // Read response from server's output fifo.
+  string response;
+  std::ifstream s2c(SERVER_TO_CLIENT_PATH.c_str());
+  std::getline(s2c, response);
+  s2c.close();
 
-        xmlrpc_c::clientSimple myClient;
-        xmlrpc_c::value result;
-        
-        myClient.call(serverUrl, methodName, "ii", &result, 5, 7);
+  double out = std::stod(response);
 
-        // XXX: how do we get more complex types out? I guess we just need a
-        // float back, really.
-        // Assume the method returned a double; throws error if not
-        sum = xmlrpc_c::value_double(result);
-        cout << "Result of RPC (sum of 5 and 7): " << sum << endl;
-
-    } catch (exception const& e) {
-        cerr << "Client threw error: " << e.what() << endl;
-        exit(1);
-    }
-  return sum;
+  return out;
 }
 
 void ChipaFF::EvaluateWithSourceContext(
