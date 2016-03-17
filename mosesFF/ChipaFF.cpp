@@ -21,7 +21,11 @@ const string CLIENT_TO_SERVER_PATH = "/tmp/client_to_server.fifo";
 
 // TODO(alexr): going to need to understand how to use this input object and
 // what we want to feed back into Moses.
-double makeRpcCall(const InputType &input) {
+double makeRpcCall(const InputType& input, const TargetPhrase& targetPhrase) {
+
+  // figuring out how to get the text out of a sentence
+  input.GetSubString(Moses::Range(0, input.GetSize()));
+
   std::ofstream c2s;
   c2s.open(CLIENT_TO_SERVER_PATH.c_str());
   c2s << "foo";
@@ -34,7 +38,7 @@ double makeRpcCall(const InputType &input) {
   s2c.close();
 
   std::string::size_type sz;
-  double out = atof(response.c_str()); //std::stod(response, &sz);
+  double out = atof(response.c_str());
 
   return out;
 }
@@ -50,7 +54,7 @@ void ChipaFF::EvaluateWithSourceContext(
   if (targetPhrase.GetNumNonTerminals()) {
     vector<float> newScores(m_numScoreComponents);
 
-    newScores[0] = makeRpcCall(input);
+    newScores[0] = makeRpcCall(input, targetPhrase);
     scoreBreakdown.PlusEquals(this, newScores);
   }
 }
