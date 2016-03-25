@@ -3,10 +3,12 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <boost/algorithm/string/join.hpp>
 
 #include "ChipaFF.h"
 #include "moses/ScoreComponentCollection.h"
 #include "moses/TargetPhrase.h"
+#include "moses/InputType.h"
 
 using namespace std;
 
@@ -23,12 +25,20 @@ const string CLIENT_TO_SERVER_PATH = "/tmp/client_to_server.fifo";
 // what we want to feed back into Moses.
 double makeRpcCall(const InputType& input, const TargetPhrase& targetPhrase) {
 
-  // figuring out how to get the text out of a sentence
-  input.GetSubString(Moses::Range(0, input.GetSize()));
+  // Get the text out of the input sentence, put it into a single string.
+  vector<string> tokens;
+  vector<FactorType> factors;
+  factors.push_back(0);
+  for (unsigned int i = 0; i < input.GetSize(); ++i) {
+    string word = input.GetWord(i).GetString(factors, false);
+    tokens.push_back(word);
+  }
+  string sentence = boost::algorithm::join(tokens, " ");
 
+  // going to send SOURCE_SENTENCE<tab>FOCUS_INDEX<tab>PROPOSED_TRANSLATION
   std::ofstream c2s;
   c2s.open(CLIENT_TO_SERVER_PATH.c_str());
-  c2s << "foo";
+  c2s << sentence;
   c2s.close();
 
   // Read response from server's output fifo.
