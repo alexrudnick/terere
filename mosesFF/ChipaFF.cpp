@@ -9,6 +9,7 @@
 #include "moses/ScoreComponentCollection.h"
 #include "moses/TargetPhrase.h"
 #include "moses/InputType.h"
+#include "moses/InputPath.h"
 
 using namespace std;
 
@@ -21,10 +22,9 @@ ChipaFF::ChipaFF(const std::string &line) : StatelessFeatureFunction(2, line) {
 const string SERVER_TO_CLIENT_PATH = "/tmp/server_to_client.fifo";
 const string CLIENT_TO_SERVER_PATH = "/tmp/client_to_server.fifo";
 
-// TODO(alexr): going to need to understand how to use this input object and
-// what we want to feed back into Moses.
-double makeRpcCall(const InputType& input, const TargetPhrase& targetPhrase) {
-
+double makeRpcCall(const InputType& input,
+                   const InputPath &inputPath,
+                   const TargetPhrase& targetPhrase) {
   // Get the text out of the input sentence, put it into a single string.
   vector<string> tokens;
   vector<FactorType> factors;
@@ -35,10 +35,19 @@ double makeRpcCall(const InputType& input, const TargetPhrase& targetPhrase) {
   }
   string sentence = boost::algorithm::join(tokens, " ");
 
+  tokens.clear();
+  for (unsigned int i = 0; i < targetPhrase.GetSize(); ++i) {
+    string word = targetPhrase.GetWord(i).GetString(factors, false);
+    tokens.push_back(word);
+  }
+  string translation = boost::algorithm::join(tokens, " ");
+
+  size_t source_index = inputPath.GetWordsRange().GetStartPos();
+
   // going to send SOURCE_SENTENCE<tab>FOCUS_INDEX<tab>PROPOSED_TRANSLATION
   std::ofstream c2s;
   c2s.open(CLIENT_TO_SERVER_PATH.c_str());
-  c2s << sentence;
+  c2s << sentence << "\t" << source_index << "\t" << translation;
   c2s.close();
 
   // Read response from server's output fifo.
@@ -64,7 +73,7 @@ void ChipaFF::EvaluateWithSourceContext(
   if (targetPhrase.GetNumNonTerminals()) {
     vector<float> newScores(m_numScoreComponents);
 
-    newScores[0] = makeRpcCall(input, targetPhrase);
+    newScores[0] = makeRpcCall(input, inputPath, targetPhrase);
     scoreBreakdown.PlusEquals(this, newScores);
   }
 }
