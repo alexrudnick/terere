@@ -14,7 +14,7 @@
 using namespace std;
 
 namespace Moses {
-ChipaFF::ChipaFF(const std::string &line) : StatelessFeatureFunction(2, line) {
+ChipaFF::ChipaFF(const std::string &line) : StatelessFeatureFunction(1, line) {
   ReadParameters();
 }
 
@@ -82,14 +82,7 @@ void ChipaFF::EvaluateInIsolation(
     const Phrase &source, const TargetPhrase &targetPhrase,
     ScoreComponentCollection &scoreBreakdown,
     ScoreComponentCollection &estimatedScores) const {
-  // dense scores
-  vector<float> newScores(m_numScoreComponents);
-  newScores[0] = 1.5;
-  newScores[1] = 0.3;
-  scoreBreakdown.PlusEquals(this, newScores);
-
-  // sparse scores
-  scoreBreakdown.PlusEquals(this, "sparse-name", 2.4);
+  // Can't really evaluate this in isolation.
 }
 
 void ChipaFF::EvaluateTranslationOptionListWithSourceContext(

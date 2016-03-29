@@ -19,5 +19,4 @@ cat ~/terere/bibletools/output/bible.es-gn \
   --f es \
   --e gn \
   --alignment srctotgt \
-  --lm 0:3:/space/terere/moses-es-gn/nc.klm \
-  --sparse-phrase-features ChipaFF
+  --lm 0:3:/space/terere/moses-es-gn/nc.klm
