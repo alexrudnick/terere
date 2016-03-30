@@ -6,6 +6,9 @@ SERVER_TO_CLIENT_PATH = "/tmp/server_to_client.fifo"
 CLIENT_TO_SERVER_PATH = "/tmp/client_to_server.fifo"
 
 def init_fifos():
+    os.remove(SERVER_TO_CLIENT_PATH)
+    os.remove(CLIENT_TO_SERVER_PATH)
+
     if not os.path.exists(SERVER_TO_CLIENT_PATH):
         os.mkfifo(SERVER_TO_CLIENT_PATH)
     if not os.path.exists(CLIENT_TO_SERVER_PATH):
@@ -24,6 +27,6 @@ def main():
             for line in c2s:
                 line = line.strip()
                 print("Received: " + line)
-                send_response(line.upper())
+                send_response(len(line))
 
 if __name__ == "__main__": main()

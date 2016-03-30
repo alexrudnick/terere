@@ -44,10 +44,12 @@ double makeRpcCall(const InputType& input,
 
   size_t source_index = inputPath.GetWordsRange().GetStartPos();
 
+  std::cout << "ChipaFF, sending: " << sentence << "\t" << source_index << "\t" << translation << std::endl;
+
   // going to send SOURCE_SENTENCE<tab>FOCUS_INDEX<tab>PROPOSED_TRANSLATION
   std::ofstream c2s;
   c2s.open(CLIENT_TO_SERVER_PATH.c_str());
-  c2s << sentence << "\t" << source_index << "\t" << translation;
+  c2s << sentence << "\t" << source_index << "\t" << translation << std::endl;
   c2s.close();
 
   // Read response from server's output fifo.
@@ -55,6 +57,8 @@ double makeRpcCall(const InputType& input,
   std::ifstream s2c(SERVER_TO_CLIENT_PATH.c_str());
   std::getline(s2c, response);
   s2c.close();
+
+  std::cout << "ChipaFF, received: " << response << std::endl;
 
   std::string::size_type sz;
   double out = atof(response.c_str());
@@ -69,13 +73,10 @@ void ChipaFF::EvaluateWithSourceContext(
     ScoreComponentCollection *estimatedScores) const {
   // XXX need to find out what the current focus word is and how to get the
   // whole source sentence.
+  vector<float> newScores(m_numScoreComponents);
 
-  if (targetPhrase.GetNumNonTerminals()) {
-    vector<float> newScores(m_numScoreComponents);
-
-    newScores[0] = makeRpcCall(input, inputPath, targetPhrase);
-    scoreBreakdown.PlusEquals(this, newScores);
-  }
+  newScores[0] = makeRpcCall(input, inputPath, targetPhrase);
+  scoreBreakdown.PlusEquals(this, newScores);
 }
 
 void ChipaFF::EvaluateInIsolation(
