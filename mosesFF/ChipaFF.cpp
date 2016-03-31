@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <boost/algorithm/string/join.hpp>
+#include <boost/algorithm/string/split.hpp>
+#include <boost/algorithm/string/classification.hpp>
 
 #include "ChipaFF.h"
 #include "moses/ScoreComponentCollection.h"
@@ -60,8 +62,12 @@ double makeRpcCall(const InputType& input,
 
   std::cout << "ChipaFF, received: " << response << std::endl;
 
-  std::string::size_type sz;
-  double out = atof(response.c_str());
+  vector<string> response_fields;
+  boost::algorithm::split(response_fields, response,
+                          boost::is_any_of("\t"));
+  std::cout << "are they equal? " << (response_fields[2] == translation)
+            << std::endl;
+  double out = atof(response_fields[3].c_str());
 
   return out;
 }
