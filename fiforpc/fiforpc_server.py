@@ -23,10 +23,11 @@ def main():
 
     print("OK serving forever.")
     while True:
+        line = ""
         with open(CLIENT_TO_SERVER_PATH, "r") as c2s:
-            for line in c2s:
-                line = line.strip()
-                print("Received: " + line)
-                send_response(line + '\t' + str(len(line)))
+            line = c2s.readline()
+            line = line.strip()
+        print("Received: " + line)
+        send_response(line + '\t' + str(len(line)))
 
 if __name__ == "__main__": main()
