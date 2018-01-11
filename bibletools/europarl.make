@@ -83,3 +83,31 @@ europarl.es-fr:
 	    output/europarl.es-fr.target.lemmas \
 	    > output/europarl.es-fr
 	~/cdec/word-aligner/fast_align -i ./output/europarl.es-fr -d -v -o > output/europarl.es-fr.align
+
+100keuroparl.es-fr:
+	~/cdec/corpus/paste-files.pl /space/europarl/aligned/es-fr/es.txt /space/europarl/aligned/es-fr/fr.txt > output/europarl.es-fr.unfiltered
+	~/cdec/corpus/filter-length.pl -80 output/europarl.es-fr.unfiltered > output/europarl.es-fr.surface
+	head -n 100000 output/europarl.es-fr.surface > output/100keuroparl.es-fr.surface
+	## having done the length filtering, we can take the source side of the
+	## surface bitext and produce the annotated version.
+	~/cdec/corpus/cut-corpus.pl 1 \
+		< output/100keuroparl.es-fr.surface \
+		> output/100keuroparl.es-fr.surface.source
+	analyze -f freeling-config/es.cfg < output/100keuroparl.es-fr.surface.source > output/100keuroparl.es-fr.source.tagged
+	~/cdec/corpus/cut-corpus.pl 2 \
+		< output/100keuroparl.es-fr.surface \
+		> output/100keuroparl.es-fr.surface.target
+	analyze -f freeling-config/fr.cfg < output/100keuroparl.es-fr.surface.target > output/100keuroparl.es-fr.target.tagged
+	python3 freeling_to_annotated.py \
+	    --freeling output/100keuroparl.es-fr.source.tagged \
+	    --lemma_out output/100keuroparl.es-fr.source.lemmas \
+	    --annotated output/100keuroparl.es-fr.source.annotated
+	python3 freeling_to_annotated.py \
+	    --freeling output/100keuroparl.es-fr.target.tagged \
+	    --lemma_out output/100keuroparl.es-fr.target.lemmas \
+	    --annotated output/100keuroparl.es-fr.target.annotated
+	~/cdec/corpus/paste-files.pl \
+	    output/100keuroparl.es-fr.source.lemmas \
+	    output/100keuroparl.es-fr.target.lemmas \
+	    > output/100keuroparl.es-fr
+	~/cdec/word-aligner/fast_align -i ./output/100keuroparl.es-fr -d -v -o > output/100keuroparl.es-fr.align
