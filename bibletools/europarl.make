@@ -165,3 +165,29 @@ europarl.es-it:
 	    output/europarl.es-it.target.lemmas \
 	    > output/europarl.es-it
 	~/cdec/word-aligner/fast_align -i ./output/europarl.es-it -d -v -o > output/europarl.es-it.align
+
+europarl.es-nl:
+	~/cdec/corpus/paste-files.pl /space/europarl/aligned/es-nl/es.txt /space/europarl/aligned/es-nl/nl.txt > output/europarl.es-nl.unfiltered
+	~/cdec/corpus/filter-length.pl -80 output/europarl.es-nl.unfiltered > output/europarl.es-nl.surface
+	## having done the length filtering, we can take the source side of the
+	## surface bitext and produce the annotated version.
+	~/cdec/corpus/cut-corpus.pl 1 \
+		< output/europarl.es-nl.surface \
+		> output/europarl.es-nl.surface.source
+	analyze -f freeling-config/es.cfg < output/europarl.es-nl.surface.source > output/europarl.es-nl.source.tagged
+	~/cdec/corpus/cut-corpus.pl 2 \
+		< output/europarl.es-nl.surface \
+		> output/europarl.es-nl.surface.target
+	~/lamachine/bin/frog -n < output/europarl.es-nl.surface.target > output/europarl.es-nl.target.frog
+	python3 freeling_to_annotated.py \
+	    --freeling output/europarl.es-nl.source.tagged \
+	    --lemma_out output/europarl.es-nl.source.lemmas \
+	    --annotated output/europarl.es-nl.source.annotated
+	python3 frog_to_lemmas.py \
+	    --frog output/europarl.es-nl.target.frog \
+	    --lemma_out output/europarl.es-nl.target.lemmas
+	~/cdec/corpus/paste-files.pl \
+	    output/europarl.es-nl.source.lemmas \
+	    output/europarl.es-nl.target.lemmas \
+	    > output/europarl.es-nl
+	~/cdec/word-aligner/fast_align -i ./output/europarl.es-nl -d -v -o > output/europarl.es-nl.align
