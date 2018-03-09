@@ -19,7 +19,7 @@ import sys
 import util
 import tokenizer
 
-LANGUAGES = "en es gn qu".split()
+LANGUAGES = "en es gn qu nl it de fr".split()
 
 def load_bible(fn):
     out = {}

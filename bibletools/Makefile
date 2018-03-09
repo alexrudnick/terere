@@ -130,3 +130,15 @@ bible.en:
 
 bible.qu:
 	./extract_qu.sh
+
+bible.de:
+	./extract_de.sh
+
+bible.fr:
+	./extract_fr.sh
+
+bible.it:
+	./extract_it.sh
+
+bible.nl:
+	./extract_nl.sh
