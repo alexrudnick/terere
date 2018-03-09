@@ -13,7 +13,7 @@ def load_table():
     global LOOKUP
     here = os.path.dirname(os.path.realpath(__file__))
     fn = here + os.path.sep + "booknames.txt"
-    LOOKUP = defaultdict(str)
+    LOOKUP = {}
     with open(fn) as infile:
         for line in infile:
             bookcode, name = line.strip().split(maxsplit=1)
@@ -37,7 +37,10 @@ if not NUMBER_LOOKUP:
     load_number_table()
 
 def code(name):
-    return LOOKUP[name]
+    if name in LOOKUP:
+        return LOOKUP[name]
+    else:
+        return name
 
 def knownbooks():
     return KNOWNBOOKS

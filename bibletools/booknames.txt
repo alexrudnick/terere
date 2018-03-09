@@ -130,3 +130,14 @@ Jas JAS
 3John 3JN
 Jude JUD
 Rev REV
+1John 1JO
+2John 2JO
+3John 3JO
+Ezek EZE
+Jas JAM
+Joel JOE
+John JOH
+Mark MAR
+Nah NAH
+Phil PHI
+Song SON
