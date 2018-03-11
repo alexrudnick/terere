@@ -174,6 +174,34 @@ bible.es-de: bible.es bible.de
 	    > output/bible.es-de
 	~/cdec/word-aligner/fast_align -i ./output/bible.es-de -d -v -o > output/bible.es-de.align
 
+## Spanish-Italian
+bible.es-it: bible.es bible.it
+	./bitext_es_it.sh
+	~/cdec/corpus/filter-length.pl -80 output/bible.es-it.unfiltered > output/bible.es-it.surface
+	## having done the length filtering, we can take the source side of the
+	## surface bitext and produce the annotated version.
+	~/cdec/corpus/cut-corpus.pl 1 \
+		< output/bible.es-it.surface \
+		> output/bible.es-it.surface.source
+	analyze -f freeling-config/es.cfg < output/bible.es-it.surface.source > output/bible.es-it.source.tagged
+	~/cdec/corpus/cut-corpus.pl 2 \
+		< output/bible.es-it.surface \
+		> output/bible.es-it.surface.target
+	analyze -f freeling-config/it.cfg < output/bible.es-it.surface.target > output/bible.es-it.target.tagged
+	python3 freeling_to_annotated.py \
+	    --freeling output/bible.es-it.source.tagged \
+	    --lemma_out output/bible.es-it.source.lemmas \
+	    --annotated output/bible.es-it.source.annotated
+	python3 freeling_to_annotated.py \
+	    --freeling output/bible.es-it.target.tagged \
+	    --lemma_out output/bible.es-it.target.lemmas \
+	    --annotated output/bible.es-it.target.annotated
+	~/cdec/corpus/paste-files.pl \
+	    output/bible.es-it.source.lemmas \
+	    output/bible.es-it.target.lemmas \
+	    > output/bible.es-it
+	~/cdec/word-aligner/fast_align -i ./output/bible.es-it -d -v -o > output/bible.es-it.align
+
 ## extract bibles from their original formats
 bible.es:
 	./extract_es.sh
