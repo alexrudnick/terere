@@ -202,6 +202,33 @@ bible.es-it: bible.es bible.it
 	    > output/bible.es-it
 	~/cdec/word-aligner/fast_align -i ./output/bible.es-it -d -v -o > output/bible.es-it.align
 
+## Spanish-Dutch
+bible.es-nl: bible.es bible.nl
+	./bitext_es_nl.sh
+	~/cdec/corpus/filter-length.pl -80 output/bible.es-nl.unfiltered > output/bible.es-nl.surface
+	## having done the length filtering, we can take the source side of the
+	## surface bitext and produce the annotated version.
+	~/cdec/corpus/cut-corpus.pl 1 \
+		< output/bible.es-nl.surface \
+		> output/bible.es-nl.surface.source
+	analyze -f freeling-config/es.cfg < output/bible.es-nl.surface.source > output/bible.es-nl.source.tagged
+	python3 freeling_to_annotated.py \
+	    --freeling output/bible.es-nl.source.tagged \
+	    --lemma_out output/bible.es-nl.source.lemmas \
+	    --annotated output/bible.es-nl.source.annotated
+	~/cdec/corpus/cut-corpus.pl 2 \
+		< output/bible.es-nl.surface \
+		> output/bible.es-nl.surface.target
+	~/lamachine/bin/frog -n < output/bible.es-nl.surface.target > output/bible.es-nl.target.frog
+	python3 frog_to_lemmas.py \
+	    --frog output/bible.es-nl.target.frog \
+	    --lemma_out output/bible.es-nl.target.lemmas
+	~/cdec/corpus/paste-files.pl \
+	    output/bible.es-nl.source.lemmas \
+	    output/bible.es-nl.target.lemmas \
+	    > output/bible.es-nl
+	~/cdec/word-aligner/fast_align -i ./output/bible.es-nl -d -v -o > output/bible.es-nl.align
+
 ## extract bibles from their original formats
 bible.es:
 	./extract_es.sh
