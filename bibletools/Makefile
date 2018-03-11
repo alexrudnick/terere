@@ -119,7 +119,7 @@ bible.es-qu: bible.es bible.qu
 	~/cdec/word-aligner/fast_align -i ./output/bible.es-qu -d -v -o > output/bible.es-qu.align
 
 ## Spanish-French
-bible.es-fr:
+bible.es-fr: bible.es bible.fr
 	./bitext_es_fr.sh
 	~/cdec/corpus/filter-length.pl -80 output/bible.es-fr.unfiltered > output/bible.es-fr.surface
 	## having done the length filtering, we can take the source side of the
@@ -147,7 +147,7 @@ bible.es-fr:
 	~/cdec/word-aligner/fast_align -i ./output/bible.es-fr -d -v -o > output/bible.es-fr.align
 
 ## Spanish-German
-bible.es-de:
+bible.es-de: bible.es bible.de
 	./bitext_es_de.sh
 	~/cdec/corpus/filter-length.pl -80 output/bible.es-de.unfiltered > output/bible.es-de.surface
 	## having done the length filtering, we can take the source side of the
