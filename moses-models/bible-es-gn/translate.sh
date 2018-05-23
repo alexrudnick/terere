@@ -1,5 +1,5 @@
 #!/bin/bash
 
-~/space/mosesdecoder/bin/moses \
+"$HOME"/mosesdecoder/bin/moses \
   --config model/moses.ini \
   --threads 1
