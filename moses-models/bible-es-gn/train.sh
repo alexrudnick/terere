@@ -14,7 +14,7 @@ cat ~/terere/bibletools/output/bible.es-gn \
 
 "$HOME"/mosesdecoder/scripts/training/train-model.perl \
   --cores 8 \
-  --external-bin-dir /space/mosesdecoder/tools \
+  --external-bin-dir "$HOME"/mosesdecoder/tools \
   --corpus ./corpus/bible \
   --f es \
   --e gn \
