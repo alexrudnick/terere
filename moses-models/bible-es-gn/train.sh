@@ -2,11 +2,12 @@
 
 mkdir -p corpus
 
-cat ~/terere/bibletools/output/bible.es-gn \
-  | ~/cdec/corpus/cut-corpus.pl 1 \
-  | "$HOME"/mosesdecoder/scripts/tokenizer/escape-special-chars.perl \
+# pull out the Spanish surface forms
+python3 ../../bibletools/freeling_to_surface.py \
+  --freeling ../../bibletools/output/bible.es-gn.source.tagged \
   > corpus/bible.es
 
+# ... and Guarani lemmas
 cat ~/terere/bibletools/output/bible.es-gn \
   | ~/cdec/corpus/cut-corpus.pl 2 \
   | "$HOME"/mosesdecoder/scripts/tokenizer/escape-special-chars.perl \
