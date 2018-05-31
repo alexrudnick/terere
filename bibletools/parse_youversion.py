@@ -47,6 +47,7 @@ def main():
         versetable = extract_verses(fn)
         for verseid in versetable:
             versetext = " ".join(versetable[verseid])
+            versetext = versetext.replace("*f**", " ")
             verseid = fix_verseid(verseid, versetext)
             if verseid:
                 print("{0}\t{1}".format(verseid, versetext))
