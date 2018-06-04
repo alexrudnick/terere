@@ -6,8 +6,10 @@ SERVER_TO_CLIENT_PATH = "/tmp/server_to_client.fifo"
 CLIENT_TO_SERVER_PATH = "/tmp/client_to_server.fifo"
 
 def init_fifos():
-    os.remove(SERVER_TO_CLIENT_PATH)
-    os.remove(CLIENT_TO_SERVER_PATH)
+    if os.path.exists(SERVER_TO_CLIENT_PATH):
+        os.remove(SERVER_TO_CLIENT_PATH)
+    if os.path.exists(CLIENT_TO_SERVER_PATH):
+        os.remove(CLIENT_TO_SERVER_PATH)
 
     if not os.path.exists(SERVER_TO_CLIENT_PATH):
         os.mkfifo(SERVER_TO_CLIENT_PATH)
