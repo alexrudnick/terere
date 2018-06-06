@@ -46,7 +46,7 @@ double makeRpcCall(const InputType& input,
 
   size_t source_index = inputPath.GetWordsRange().GetStartPos();
 
-  std::cout << "ChipaFF, sending: " << sentence << "\t" << source_index << "\t" << translation << std::endl;
+  std::cerr << "ChipaFF, sending: " << sentence << "\t" << source_index << "\t" << translation << std::endl;
 
   // going to send SOURCE_SENTENCE<tab>FOCUS_INDEX<tab>PROPOSED_TRANSLATION
   std::ofstream c2s;
@@ -60,12 +60,12 @@ double makeRpcCall(const InputType& input,
   std::getline(s2c, response);
   s2c.close();
 
-  std::cout << "ChipaFF, received: " << response << std::endl;
+  std::cerr << "ChipaFF, received: " << response << std::endl;
 
   vector<string> response_fields;
   boost::algorithm::split(response_fields, response,
                           boost::is_any_of("\t"));
-  std::cout << "are they equal? " << (response_fields[2] == translation)
+  std::cerr << "are they equal? " << (response_fields[2] == translation)
             << std::endl;
   double out = atof(response_fields[3].c_str());
 
