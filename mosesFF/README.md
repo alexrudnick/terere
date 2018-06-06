@@ -18,3 +18,10 @@ Also edit your ~/mosesdecoder/moses/FF/Factory.cpp to include the lines:
   $ cd ~/mosesdecoder
   $ ./compile.sh --clean
   $ ./compile.sh
+
+Then, once you've trained a model, to add the Chipa feature function, you can
+add it directly to the model's moses.ini. (in model/moses.ini)
+
+  * Under \[feature\], add a line reading `ChipaFF`
+  * Then under \[weight\], add a line reading `ChipaFF0= 0.5` (note the 0 after
+  "ChipaFF")
