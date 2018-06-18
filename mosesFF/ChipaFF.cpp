@@ -33,6 +33,7 @@ double makeRpcCall(const InputType& input,
   factors.push_back(0);
   for (unsigned int i = 0; i < input.GetSize(); ++i) {
     string word = input.GetWord(i).GetString(factors, false);
+    std::cerr << i << " " << word << std::endl;
     tokens.push_back(word);
   }
   string sentence = boost::algorithm::join(tokens, " ");
@@ -80,6 +81,12 @@ void ChipaFF::EvaluateWithSourceContext(
   // XXX need to find out what the current focus word is and how to get the
   // whole source sentence.
   vector<float> newScores(m_numScoreComponents);
+
+  size_t source_index = inputPath.GetWordsRange().GetStartPos();
+  if (source_index >= input.GetSize()) {
+    std:cerr << "index past end of input: "
+             << source_index << " >= " << input.GetSize();
+  }
 
   newScores[0] = makeRpcCall(input, inputPath, targetPhrase);
   scoreBreakdown.PlusEquals(this, newScores);
