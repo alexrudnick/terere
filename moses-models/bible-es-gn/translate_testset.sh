@@ -3,7 +3,7 @@
 echo "TRANSLATING THE BAD TEST SET"
 
 "$HOME"/mosesdecoder/bin/moses \
-  --config model/moses.ini \
+  --config mert-work/moses.ini \
   --threads 1 \
   < bad-testset.source \
   > OUTPUT
