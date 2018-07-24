@@ -3,8 +3,9 @@
 import sys
 
 def main():
-    if len(sys.argv) != 3:
+    if len(sys.argv) != 4:
         print("usage: compare_translations.py source target1 target2")
+        return
 
     source_fn = sys.argv[1]
     target1_fn = sys.argv[2]
