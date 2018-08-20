@@ -31,12 +31,16 @@ def main():
     assert len(source_lines) == len(target1_lines), "wrong length of input"
     assert len(source_lines) == len(target2_lines), "wrong length of input"
 
+    lex_changes = 0
+    total_changes = 0
     for src, trg1, trg2 in zip(source_lines, target1_lines, target2_lines):
         if trg1 == trg2: continue
+        total_changes += 1
         words1 = set(trg1.split(" "))
         words2 = set(trg2.split(" "))
 
         if words1 == words2: continue
+        lex_changes += 1
 
         print(src)
         print(trg1)
@@ -44,6 +48,9 @@ def main():
         print(trg2)
         print("only in trg2:", words2 - words1)
         print()
+
+    print("lexical changes:", lex_changes)
+    print("total changes:", total_changes)
 
 
 if __name__ == "__main__": main()
